@@ -63,7 +63,7 @@ public class AnchorPoint : MonoBehaviour
         rend.material = defaultMaterial;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         rend = GetComponent<Renderer>();
     }
