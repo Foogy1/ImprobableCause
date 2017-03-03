@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class RotateObject : MonoBehaviour {
-    HeldObject heldObject;
-	// Use this for initialization
-	void Start () {
+public class RotateObject : MonoBehaviour
+{
+    private HeldObject heldObject;
+
+    // Use this for initialization
+    private void Start()
+    {
         heldObject = GetComponent<HeldObject>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
         GameObject obj = heldObject.getHeldObject();
         if (!obj) return;
         if (Input.GetKeyDown(KeyCode.W))
@@ -25,11 +27,9 @@ public class RotateObject : MonoBehaviour {
         {
             obj.transform.Rotate(obj.transform.rotation.x, obj.transform.rotation.y, obj.transform.rotation.z + 45);
         }
-
         else if (Input.GetKeyDown(KeyCode.D))
         {
             obj.transform.Rotate(obj.transform.rotation.x, obj.transform.rotation.y, obj.transform.rotation.z - 45);
         }
-
     }
 }

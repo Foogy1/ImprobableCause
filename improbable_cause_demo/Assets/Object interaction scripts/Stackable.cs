@@ -2,9 +2,9 @@
 
 public class Stackable : AnchorPoint
 {
-    /* Iusables can be placed on this object */
+    /* IUsables can be placed on this object */
 
-    private void Start()
+    protected override void Start()
     {
         side = SIDE.TOP;
         rend = GetComponent<Renderer>();

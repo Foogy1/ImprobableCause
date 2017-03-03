@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GUIComponents : MonoBehaviour {
+public class GUIComponents : MonoBehaviour
+{
     public GameObject objectTypeGameObject;
     private GUIText objectTypeText;
-
 
     public GUIText getObjectTypeText()
     {

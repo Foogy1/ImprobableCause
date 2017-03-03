@@ -11,6 +11,25 @@ public class IUsable : MonoBehaviour
     protected int IGNORE_RAYCAST_LAYER = 2;
     protected int DEFAULT_LAYER = 0;
 
+    [Tooltip("Object type label.")]
+    public ObjectType objectType;
+
+    public enum ObjectType
+    {
+        Builder,
+        Stacker,
+        Jumper,
+    }
+
+    public string getObjectType()
+    {
+        return objectType.ToString();
+    }
+
+    public virtual void Start()
+    {
+    }
+
     public virtual void pickUp()
     {
         gameObject.layer = IGNORE_RAYCAST_LAYER;
@@ -26,5 +45,9 @@ public class IUsable : MonoBehaviour
         this.anchorPoint = anchorPoint;
         gameObject.layer = DEFAULT_LAYER;
         gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
+    }
+
+    public void restart()
+    {
     }
 }

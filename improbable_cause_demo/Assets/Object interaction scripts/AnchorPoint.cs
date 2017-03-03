@@ -11,6 +11,12 @@ public class AnchorPoint : MonoBehaviour
     [Tooltip("Default material")]
     public Material defaultMaterial;
 
+    [Tooltip("Material that will show when an Item can be placed here")]
+    public Material canPlaceMaterial;
+
+    [Tooltip("Material that will show when an Item cannot be placed here")]
+    public Material cannotPlaceMaterial;
+
     [Tooltip("Specifies where an object will be placed")]
     public SIDE side;
 
@@ -78,5 +84,24 @@ public class AnchorPoint : MonoBehaviour
     {
         isOccupied = true;
         hide();
+    }
+
+    public void showCanBePlaced()
+    {
+        rend.material = canPlaceMaterial;
+    }
+
+    public void showCannotBePlaced()
+    {
+        rend.material = cannotPlaceMaterial;
+    }
+
+    public bool canObjectBePlacedHere(GameObject go)
+    {
+        float yBound = go.GetComponent<Renderer>().bounds.size.y;
+        float xBound = go.GetComponent<Renderer>().bounds.size.x;
+        float zBound = go.GetComponent<Renderer>().bounds.size.z;
+
+        return (rend.bounds.size.x > xBound && rend.bounds.size.z > zBound);
     }
 }

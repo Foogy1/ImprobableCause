@@ -30,8 +30,9 @@ public class Jumper : IUsable
     [Tooltip("Object will do action on timer.")]
     public bool onTimer = false;
 
-    private void Start()
+    public override void Start()
     {
+        objectType = ObjectType.Jumper;
         targetPoint = originalTargetPoint;
         endPos = targetPoint.transform.position;
     }
