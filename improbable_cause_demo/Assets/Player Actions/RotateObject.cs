@@ -2,6 +2,7 @@
 
 public class RotateObject : MonoBehaviour
 {
+    public float ROTATION = 45.0f;
     private HeldObject heldObject;
 
     // Use this for initialization
@@ -17,19 +18,28 @@ public class RotateObject : MonoBehaviour
         if (!obj) return;
         if (Input.GetKeyDown(KeyCode.W))
         {
-            obj.transform.Rotate(obj.transform.rotation.x + 45, obj.transform.rotation.y, obj.transform.rotation.z);
+            float rotation = ((obj.transform.rotation.x + ROTATION) % ROTATION) * ROTATION;
+            obj.transform.Rotate(rotation, obj.transform.rotation.y, obj.transform.rotation.z);
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            obj.transform.Rotate(obj.transform.rotation.x - 45, obj.transform.rotation.y, obj.transform.rotation.z);
+            float rotation = ((obj.transform.rotation.x - ROTATION) % ROTATION) * ROTATION;
+            obj.transform.Rotate(rotation, obj.transform.rotation.y, obj.transform.rotation.z);
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            obj.transform.Rotate(obj.transform.rotation.x, obj.transform.rotation.y, obj.transform.rotation.z + 45);
+            float rotation = ((obj.transform.rotation.z + ROTATION) % ROTATION) * ROTATION;
+            obj.transform.Rotate(obj.transform.rotation.x, obj.transform.rotation.y, rotation);
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            obj.transform.Rotate(obj.transform.rotation.x, obj.transform.rotation.y, obj.transform.rotation.z - 45);
+            float rotation = ((obj.transform.rotation.z - ROTATION) % ROTATION) * ROTATION;
+            obj.transform.Rotate(obj.transform.rotation.x, obj.transform.rotation.y, obj.transform.rotation.z - ROTATION);
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            // Reset object rotation.
+            obj.transform.Rotate(0, 0, 0);
         }
     }
 }

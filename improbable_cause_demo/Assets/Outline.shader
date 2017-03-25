@@ -39,7 +39,6 @@
 		return o;
 	}
 
-
 	half frag(v2f i) : COLOR
 	{
 		//arbitrary number of iterations for now
@@ -52,7 +51,7 @@
 	float ColorIntensityInRadius;
 
 	//for every iteration we need to do horizontally
-	for (int k = 0; k<NumberOfIterations; k += 1)
+	for (int k = 0; k < NumberOfIterations; k += 1)
 	{
 		//increase our output color by the pixels in the area
 		ColorIntensityInRadius += tex2D(
@@ -70,9 +69,8 @@
 	}
 
 		ENDCG
-
 	}
-		//end pass    
+		//end pass
 
 		GrabPass{}
 
@@ -112,7 +110,6 @@
 		return o;
 	}
 
-
 	half4 frag(v2f i) : COLOR
 	{
 		//arbitrary number of iterations for now
@@ -125,13 +122,13 @@
 	half ColorIntensityInRadius = 0;
 
 	//if something already exists underneath the fragment (in the original texture), discard the fragment.
-	if (tex2D(_MainTex,i.uvs.xy).r>0)
+	if (tex2D(_MainTex,i.uvs.xy).r > 0)
 	{
 		return tex2D(_SceneTex,float2(i.uvs.x,1 - i.uvs.y));
 	}
 
 	//for every iteration we need to do vertically
-	for (int j = 0; j<NumberOfIterations; j += 1)
+	for (int j = 0; j < NumberOfIterations; j += 1)
 	{
 		//increase our output color by the pixels in the area
 		ColorIntensityInRadius += tex2D(
@@ -144,16 +141,14 @@
 		).r / NumberOfIterations;
 	}
 
-
 	//this is alpha blending, but we can't use HW blending unless we make a third pass, so this is probably cheaper.
 	half4 outcolor = ColorIntensityInRadius*half4(0,1,1,1) * 2 + (1 - ColorIntensityInRadius)*tex2D(_SceneTex,float2(i.uvs.x,1 - i.uvs.y));
 	return outcolor;
 	}
 
 		ENDCG
-
 	}
-		//end pass    
+		//end pass
 	}
 		//end subshader
 }

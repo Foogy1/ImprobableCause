@@ -485,15 +485,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4776360731777218, guid: 4c9c3377f418a2e4aa8c4b67899a4a1f, type: 2}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4776360731777218, guid: 4c9c3377f418a2e4aa8c4b67899a4a1f, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4776360731777218, guid: 4c9c3377f418a2e4aa8c4b67899a4a1f, type: 2}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114861298996674940, guid: 4c9c3377f418a2e4aa8c4b67899a4a1f, type: 2}
@@ -516,6 +516,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTypeGameObject: {fileID: 873765089}
+--- !u!114 &1137588192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1137588184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4eb0b4c9ea038e4f86babf7edb58a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ROTATION: 45
 --- !u!4 &1346828329 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4861125941147266, guid: a338faf5bb541f34ab64cf9390b34d8e,
@@ -622,7 +634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0412cc528fdaa4ebb321d0a6a2b776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 0}
   defaultMaterial: {fileID: 0}
   canPlaceMaterial: {fileID: 0}
   cannotPlaceMaterial: {fileID: 0}

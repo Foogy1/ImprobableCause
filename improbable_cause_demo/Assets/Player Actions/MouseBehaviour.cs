@@ -84,24 +84,12 @@ public class MouseBehaviour : MonoBehaviour
     // highlights anchor points
     private void showAnchorPoints()
     {
-        foreach (AnchorPoint ap in anchorPoints)
-        {
-            if (ap.IsOccupied == false)
-            {
-                ap.show();
-            }
-        }
+        
     }
 
     // hides all anchor points
     private void hideAnchorPoints()
     {
-        foreach (AnchorPoint ap in anchorPoints)
-        {
-            if (ap.IsOccupied == false)
-            {
-                ap.hide();
-            }
-        }
+      
     }
 }

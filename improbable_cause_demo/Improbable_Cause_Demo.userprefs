@@ -1,8 +1,9 @@
-﻿<Properties StartupItem="Improbable_Cause_Demo.csproj">
+﻿<Properties StartupItem="improbable_cause_demo.Plugins.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Object interaction scripts\Stackable.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\In-Game Button Scripts\InGameButtons.cs">
     <Files>
       <File FileName="Assets\Object interaction scripts\Stackable.cs" Line="1" Column="1" />
+      <File FileName="Assets\In-Game Button Scripts\InGameButtons.cs" Line="4" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

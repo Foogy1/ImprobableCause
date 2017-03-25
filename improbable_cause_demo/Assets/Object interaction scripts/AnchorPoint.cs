@@ -4,10 +4,6 @@ public class AnchorPoint : MonoBehaviour
 {
     /* AnchorPoint class, IUsables will be placed on this object. The side of the object
      * can be specified with the Side enum */
-
-    [Tooltip("Material that will show when an Item is picked up and the point is not occupied.")]
-    public Material highlightMaterial;
-
     [Tooltip("Default material")]
     public Material defaultMaterial;
 
@@ -33,6 +29,7 @@ public class AnchorPoint : MonoBehaviour
         BOTTOM,
     }
 
+ 
     // Places object based on position and size.
     public Vector3 GetPosition(float objectSize)
     {
@@ -59,19 +56,10 @@ public class AnchorPoint : MonoBehaviour
         return new Vector3(0, 0, 0);
     }
 
-    public void show()
-    {
-        rend.material = highlightMaterial;
-    }
-
-    public void hide()
-    {
-        rend.material = defaultMaterial;
-    }
-
     protected virtual void Start()
     {
         rend = GetComponent<Renderer>();
+        defaultMaterial = GetComponent<Material>();
     }
 
     public bool IsOccupied
@@ -83,25 +71,20 @@ public class AnchorPoint : MonoBehaviour
     public void setObject()
     {
         isOccupied = true;
-        hide();
     }
 
     public void showCanBePlaced()
     {
-        rend.material = canPlaceMaterial;
+       // rend.material = canPlaceMaterial;
     }
 
     public void showCannotBePlaced()
     {
-        rend.material = cannotPlaceMaterial;
+       // rend.material = cannotPlaceMaterial;
     }
 
     public bool canObjectBePlacedHere(GameObject go)
     {
-        float yBound = go.GetComponent<Renderer>().bounds.size.y;
-        float xBound = go.GetComponent<Renderer>().bounds.size.x;
-        float zBound = go.GetComponent<Renderer>().bounds.size.z;
-
-        return (rend.bounds.size.x > xBound && rend.bounds.size.z > zBound);
+        return true;
     }
 }

@@ -6,8 +6,6 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
     /* This class defines the behaviour of the clicking and moving objects.
      * It also signals to the anchor points when to highlight. */
     private HeldObject heldObject;
-    public GameObject[] anchorPointObject;
-    private AnchorPoint[] anchorPoints;
     private GUIComponents guiComponents;
 
     private void Start()
@@ -16,11 +14,6 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
         // very often).
         heldObject = GetComponent<HeldObject>();
         guiComponents = GetComponent<GUIComponents>();
-        anchorPoints = new AnchorPoint[anchorPointObject.Length];
-        for (int i = 0; i < anchorPointObject.Length; i++)
-        {
-            anchorPoints[i] = anchorPointObject[i].GetComponent<AnchorPoint>();
-        }
     }
 
     private void Update()
@@ -138,24 +131,12 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
     // highlights anchor points
     private void showAnchorPoints()
     {
-        foreach (AnchorPoint ap in anchorPoints)
-        {
-            if (ap.IsOccupied == false)
-            {
-                ap.show();
-            }
-        }
+       
     }
 
     // hides all anchor points
     private void hideAnchorPoints()
     {
-        foreach (AnchorPoint ap in anchorPoints)
-        {
-            if (ap.IsOccupied == false)
-            {
-                ap.hide();
-            }
-        }
+       
     }
 }

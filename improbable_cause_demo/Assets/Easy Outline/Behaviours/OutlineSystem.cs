@@ -28,7 +28,6 @@ public class OutlineSystem : MonoBehaviour
     [Range(1, 10)]
     public int outlineIterations = 2;
 
-
     [Tooltip("Upscaling of outline texture")]
     [Range(0.1f, 5)]
     public float outlineUpscale = 1f;
@@ -38,28 +37,28 @@ public class OutlineSystem : MonoBehaviour
     [Space(10)]
     [Header("Component References - Do not change")]
     private RenderTexture renTexInput;
+
     private RenderTexture renTexRecolor;
     private RenderTexture renTexDownsample;
     private RenderTexture renTexBlur;
     private RenderTexture renTexOut;
-    
+
     public Material blurMaterial;
     public Material outlineMaterial;
 
     //Used to check if the screen size has been changed
     private Vector2 prevSize;
 
-    void Awake()
+    private void Awake()
     {
-        if(mainCamera == null)
+        if (mainCamera == null)
         {
             mainCamera = Camera.main;
         }
         UpdateRenderTextureSizes();
     }
-    
 
-    void UpdateRenderTextureSizes()
+    private void UpdateRenderTextureSizes()
     {
         Vector2 screenDims = ScreenDimension();
         int x = Mathf.FloorToInt(Mathf.FloorToInt(screenDims.x) * outlineUpscale);
@@ -78,9 +77,8 @@ public class OutlineSystem : MonoBehaviour
         return size;
     }
 
-    void RunCalcs()
+    private void RunCalcs()
     {
-
         outlineMaterial.SetColor("_OutlineCol", outlineColor);
         outlineMaterial.SetFloat("_GradientStrengthModifier", outlineStrength);
 
@@ -88,19 +86,18 @@ public class OutlineSystem : MonoBehaviour
         int prevCullGroup = mainCamera.cullingMask;
         CameraClearFlags prevClearFlags = mainCamera.clearFlags;
         Color prevColor = mainCamera.backgroundColor;
-        
+
         mainCamera.cullingMask = outlineLayer.value;
         mainCamera.targetTexture = renTexInput;
         mainCamera.clearFlags = CameraClearFlags.SolidColor;
         mainCamera.backgroundColor = new Color(1f, 0f, 1f, 1f);
-        
+
         mainCamera.Render();
 
         mainCamera.backgroundColor = prevColor;
         mainCamera.clearFlags = prevClearFlags;
         mainCamera.targetTexture = prevRenTex;
         mainCamera.cullingMask = prevCullGroup;
-
 
         float widthMod = 1.0f / (1.0f * (1 << downsampleAmount));
         blurMaterial.SetVector("_Parameter", new Vector4(outlineSize * widthMod, -outlineSize * widthMod, 0.0f, 0.0f));
@@ -121,7 +118,7 @@ public class OutlineSystem : MonoBehaviour
         Graphics.Blit(renTexRecolor, renTexOut, outlineMaterial, 1);
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         Vector2 currentSize = new Vector2(Screen.width, Screen.height);
         if (prevSize != currentSize)
@@ -132,7 +129,7 @@ public class OutlineSystem : MonoBehaviour
         RunCalcs();
     }
 
-    void OnGUI()
+    private void OnGUI()
     {
         GL.PushMatrix();
         GL.LoadPixelMatrix(0, Screen.width, Screen.height, 0);

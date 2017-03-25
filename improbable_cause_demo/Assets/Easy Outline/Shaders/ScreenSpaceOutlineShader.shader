@@ -58,7 +58,6 @@
 		ENDCG
 	}
 
-
 		Pass
 	{
 		CGPROGRAM
