@@ -30,11 +30,11 @@ Material:
     m_Floats:
     - first:
         name: _GradientStrengthModifier
-      second: 2
+      second: 1.8
     - first:
         name: _Solid
-      second: 0
+      second: 1
     m_Colors:
     - first:
         name: _OutlineCol
-      second: {r: 0.9558824, g: 0.042171266, b: 0.042171266, a: 1}
+      second: {r: 1, g: 0, b: 0.93103456, a: 1}
