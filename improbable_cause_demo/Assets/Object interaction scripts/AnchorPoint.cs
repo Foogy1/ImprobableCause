@@ -17,6 +17,7 @@ public class AnchorPoint : MonoBehaviour
     public SIDE side;
 
     private bool isOccupied = false;
+	public bool isTransparent = false;
     protected Renderer rend;
 
     // This enum represents where an IUsable will be placed when it is dropped on
@@ -72,16 +73,39 @@ public class AnchorPoint : MonoBehaviour
     {
         isOccupied = true;
     }
-
-    public void showCanBePlaced()
+		
+	//made it so the following two functions need a gameobject input (changed in other script)
+	//changing the anchor point material to a translucent green
+	public void showCanBePlaced(GameObject target)
     {
+		Color targetColor = target.GetComponent<Renderer> ().material.color;
+		targetColor = Color.green;
+		targetColor.a = .5f;
+		target.GetComponent<Renderer> ().material.color = targetColor;
        // rend.material = canPlaceMaterial;
     }
 
-    public void showCannotBePlaced()
+	//changing the anchor point material to a translucent red
+	public void showCannotBePlaced(GameObject target)
     {
+		Color targetColor = target.GetComponent<Renderer> ().material.color;
+		targetColor = Color.red;
+		targetColor.a = .5f;
+		target.GetComponent<Renderer> ().material.color = targetColor;
        // rend.material = cannotPlaceMaterial;
     }
+
+	public void removePreviousPlacementHighlight(GameObject prevTarget){
+		if (isTransparent == true) {
+			Material prevTargetMaterial = prevTarget.GetComponent<Renderer> ().material;
+			prevTargetMaterial.color = Color.clear;
+			prevTarget.GetComponent<Renderer> ().material = prevTargetMaterial;
+		} else {
+			Material prevTargetMaterial = prevTarget.GetComponent<Renderer> ().material;
+			prevTargetMaterial = defaultMaterial;
+			prevTarget.GetComponent<Renderer> ().material = prevTargetMaterial;
+		}
+	}
 
     public bool canObjectBePlacedHere(GameObject go)
     {
