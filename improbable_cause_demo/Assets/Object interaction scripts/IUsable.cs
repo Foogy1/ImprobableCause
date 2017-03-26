@@ -10,15 +10,23 @@ public class IUsable : MonoBehaviour
     protected bool isPaused = false;
     protected int IGNORE_RAYCAST_LAYER = 2;
     protected int DEFAULT_LAYER = 0;
+    public string description = "";
 
     [Tooltip("Object type label.")]
     public ObjectType objectType;
 
+    public string GetDescription()
+    {
+        Debug.Log(description);
+        return description;
+    }
+
     public enum ObjectType
     {
-        Builder,
         Stacker,
         Jumper,
+        Propeller,
+        Domino
     }
 
     public string getObjectType()

@@ -7,6 +7,9 @@ public class MouseBehaviour : MonoBehaviour
      * It also signals to the anchor points when to highlight. */
     private HeldObject heldObject;
     public GameObject[] anchorPointObject;
+    public GUIText objectTypeText;
+    public GUIText description;
+    public GUIElement image;
     private AnchorPoint[] anchorPoints;
 
     private void Start()
@@ -77,6 +80,30 @@ public class MouseBehaviour : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 heldObject.moveObject(hit.point);
+            }
+        }
+        else
+        {
+            RaycastHit hit;
+            // Shoot raycast based on mouse position.
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 10000))
+            {
+                GameObject target = hit.transform.gameObject;
+                IUsable usable = target.GetComponent<IUsable>();
+                if (usable)
+                {
+                    objectTypeText.text = usable.getObjectType().ToString();
+                    description.text = usable.GetDescription();
+                    image.enabled = true;
+
+                }
+                else
+                {
+                    objectTypeText.text = "";
+                    description.text = "";
+                    image.enabled = false;
+                }
             }
         }
     }

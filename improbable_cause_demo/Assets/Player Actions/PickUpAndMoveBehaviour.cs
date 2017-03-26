@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(HeldObject))]
 public class PickUpAndMoveBehaviour : MonoBehaviour
@@ -6,14 +7,20 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
     /* This class defines the behaviour of the clicking and moving objects.
      * It also signals to the anchor points when to highlight. */
     private HeldObject heldObject;
-    private GUIComponents guiComponents;
-
+    public GameObject image;
+    public GameObject text;
+    public GameObject textBG;
+    private Text description;
+    private Text objectTypeText;
+    private Image backgroundImage;
     private void Start()
     {
         // Gathers all the anchorPoint components (You do not want to use GetComponent
         // very often).
         heldObject = GetComponent<HeldObject>();
-        guiComponents = GetComponent<GUIComponents>();
+        objectTypeText = image.GetComponentInChildren<Text>();
+        description = text.GetComponent<Text>();
+        backgroundImage = image.GetComponent<Image>();
     }
 
     private void Update()
@@ -119,11 +126,15 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             IUsable usable = target.GetComponent<IUsable>();
             if (usable)
             {
-                guiComponents.getObjectTypeText().text = usable.getObjectType();
+                description.text = usable.GetDescription();
+                objectTypeText.text = usable.getObjectType();
+                backgroundImage.enabled = true;
             }
             else
             {
-                guiComponents.getObjectTypeText().text = "";
+                description.text = "";
+                objectTypeText.text = "";
+                backgroundImage.enabled = false;
             }
         }
     }
