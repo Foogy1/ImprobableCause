@@ -19,8 +19,11 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
         // very often).
         heldObject = GetComponent<HeldObject>();
         objectTypeText = image.GetComponentInChildren<Text>();
+        objectTypeText.text = "";
         description = text.GetComponent<Text>();
+        description.text = "";
         backgroundImage = image.GetComponent<Image>();
+        backgroundImage.enabled = false;
     }
 
     private void Update()

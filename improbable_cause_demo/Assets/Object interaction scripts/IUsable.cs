@@ -52,8 +52,7 @@ public class IUsable : MonoBehaviour
     {
         this.anchorPoint = anchorPoint;
         gameObject.layer = DEFAULT_LAYER;
-        Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
-        gameObject.transform.localRotation = dropLocation.transform.localRotation;
+      //s  gameObject.transform.localRotation = dropLocation.transform.localRotation;
         gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
     }
 
