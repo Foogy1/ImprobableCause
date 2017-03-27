@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(HeldObject))]
 public class PickUpAndMoveBehaviour : MonoBehaviour
@@ -6,22 +7,46 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
     /* This class defines the behaviour of the clicking and moving objects.
      * It also signals to the anchor points when to highlight. */
     private HeldObject heldObject;
+
     private GUIComponents guiComponents;
 
 	private GameObject prevTarget;
 
 	public GameObject heldItem;
 
+    public GameObject image;
+    public GameObject text;
+    public GameObject textBG;
+    private Text description;
+    private Text objectTypeText;
+    private Image backgroundImage;
+
     private void Start()
     {
         // Gathers all the anchorPoint components (You do not want to use GetComponent
         // very often).
         heldObject = GetComponent<HeldObject>();
-        guiComponents = GetComponent<GUIComponents>();
+        objectTypeText = image.GetComponentInChildren<Text>();
+        objectTypeText.text = "";
+        description = text.GetComponent<Text>();
+        description.text = "";
+        backgroundImage = image.GetComponent<Image>();
+        backgroundImage.enabled = false;
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T) && heldObject.getHeldObject() != null)
+        {
+            try
+            {
+                heldObject.getHeldObject().GetComponent<Topple>().SLERP(90.0f);
+            }
+            catch
+            {
+                Debug.LogError("You have not attached the Topple Script to the object");
+            }
+        }
         // Pick up object only if the player is not holding another object
         if (Input.GetMouseButtonDown(0) && heldObject.getHeldObject() == null)
         {
@@ -116,7 +141,7 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
                 }
 				prevTarget = target;
             }
-			heldObject.moveObject(hit.point, heldItem);
+			heldObject.moveObject(hit.point);
         }
     }
 
@@ -130,11 +155,15 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             IUsable usable = target.GetComponent<IUsable>();
             if (usable)
             {
-                guiComponents.getObjectTypeText().text = usable.getObjectType();
+                description.text = usable.GetDescription();
+                objectTypeText.text = usable.getObjectType();
+                backgroundImage.enabled = true;
             }
             else
             {
-                guiComponents.getObjectTypeText().text = "";
+                description.text = "";
+                objectTypeText.text = "";
+                backgroundImage.enabled = false;
             }
         }
     }
