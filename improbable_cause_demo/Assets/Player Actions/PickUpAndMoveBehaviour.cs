@@ -25,6 +25,17 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T) && heldObject.getHeldObject() != null)
+        {
+            try
+            {
+                heldObject.getHeldObject().GetComponent<Topple>().SLERP(90.0f);
+            }
+            catch
+            {
+                Debug.LogError("You have not attached the Topple Script to the object");
+            }
+        }
         // Pick up object only if the player is not holding another object
         if (Input.GetMouseButtonDown(0) && heldObject.getHeldObject() == null)
         {
