@@ -20,6 +20,9 @@ public class AnchorPoint : MonoBehaviour
 	public bool isTransparent = false;
     protected Renderer rend;
 
+	public bool fulcrumReady = false;
+	public bool propellerDown = false;
+
     // This enum represents where an IUsable will be placed when it is dropped on
     // an anchor point.
     public enum SIDE
@@ -111,4 +114,19 @@ public class AnchorPoint : MonoBehaviour
     {
         return true;
     }
+
+	private void OnCollisionEnter(Collision otherObjectsCollider){
+		if (otherObjectsCollider.gameObject.tag == "Fulcrum") {
+			fulcrumReady = true;
+		} else if (otherObjectsCollider.gameObject.tag != "AnchorPoint" && otherObjectsCollider.gameObject.tag != "Room") {
+			propellerDown = true;
+		}
+	}
+	private void OnCollisionExit(Collision otherObjectsCollider){
+		if (otherObjectsCollider.gameObject.tag == "Fulcrum") {
+			fulcrumReady = false;
+		} else if(otherObjectsCollider.gameObject.tag != "AnchorPoint" && otherObjectsCollider.gameObject.tag != "Room") {
+			propellerDown = false;
+		}
+	}
 }
