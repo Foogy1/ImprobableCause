@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: dbf08ecb8fce4b946a541bba2fda4854
+timeCreated: 1490475546
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: pCube10_Shelf_5_shelving_and_light
+    100002: //RootNode
+    100004: Shelf_5_shelving_and_light_group2_pCube12
+    100006: Shelf_5_shelving_and_light_group2_pCube13
+    100008: Shelf_5_shelving_and_light_group2_pCube14
+    100010: Shelf_5_shelving_and_light_group2_pCube19
+    100012: Shelf_5_shelving_and_light_group2_pCube20
+    100014: Shelf_5_shelving_and_light_group2_pCube21
+    100016: Shelf_5_shelving_and_light_group2_pCube22
+    100018: Shelf_5_shelving_and_light_group2_pCube4
+    100020: Shelf_5_shelving_and_light_group2_pCube5
+    100022: Shelf_5_shelving_and_light_group3_pCube15
+    100024: Shelf_5_shelving_and_light_group3_pCube16
+    100026: Shelf_5_shelving_and_light_group3_pCube17
+    100028: Shelf_5_shelving_and_light_group3_pCube18
+    100030: Shelf_5_shelving_and_light_group3_pCube23
+    100032: Shelf_5_shelving_and_light_group3_pCube24
+    100034: Shelf_5_shelving_and_light_group3_pCube25
+    100036: Shelf_5_shelving_and_light_group3_pCube6
+    100038: Shelf_5_shelving_and_light_group3_pCube7
+    100040: Shelf_5_shelving_and_light_pCube11_group2
+    100042: Shelf_5_shelving_and_light_pCube26_group3
+    100044: Shelf_5_shelving_and_light_pCube3
+    100046: Shelf_5_shelving_and_light_pCube8
+    100048: Shelf_5_shelving_and_light_pCube9
+    400000: pCube10_Shelf_5_shelving_and_light
+    400002: //RootNode
+    400004: Shelf_5_shelving_and_light_group2_pCube12
+    400006: Shelf_5_shelving_and_light_group2_pCube13
+    400008: Shelf_5_shelving_and_light_group2_pCube14
+    400010: Shelf_5_shelving_and_light_group2_pCube19
+    400012: Shelf_5_shelving_and_light_group2_pCube20
+    400014: Shelf_5_shelving_and_light_group2_pCube21
+    400016: Shelf_5_shelving_and_light_group2_pCube22
+    400018: Shelf_5_shelving_and_light_group2_pCube4
+    400020: Shelf_5_shelving_and_light_group2_pCube5
+    400022: Shelf_5_shelving_and_light_group3_pCube15
+    400024: Shelf_5_shelving_and_light_group3_pCube16
+    400026: Shelf_5_shelving_and_light_group3_pCube17
+    400028: Shelf_5_shelving_and_light_group3_pCube18
+    400030: Shelf_5_shelving_and_light_group3_pCube23
+    400032: Shelf_5_shelving_and_light_group3_pCube24
+    400034: Shelf_5_shelving_and_light_group3_pCube25
+    400036: Shelf_5_shelving_and_light_group3_pCube6
+    400038: Shelf_5_shelving_and_light_group3_pCube7
+    400040: Shelf_5_shelving_and_light_pCube11_group2
+    400042: Shelf_5_shelving_and_light_pCube26_group3
+    400044: Shelf_5_shelving_and_light_pCube3
+    400046: Shelf_5_shelving_and_light_pCube8
+    400048: Shelf_5_shelving_and_light_pCube9
+    2300000: pCube10_Shelf_5_shelving_and_light
+    2300002: Shelf_5_shelving_and_light_group2_pCube12
+    2300004: Shelf_5_shelving_and_light_group2_pCube13
+    2300006: Shelf_5_shelving_and_light_group2_pCube14
+    2300008: Shelf_5_shelving_and_light_group2_pCube19
+    2300010: Shelf_5_shelving_and_light_group2_pCube20
+    2300012: Shelf_5_shelving_and_light_group2_pCube21
+    2300014: Shelf_5_shelving_and_light_group2_pCube22
+    2300016: Shelf_5_shelving_and_light_group2_pCube4
+    2300018: Shelf_5_shelving_and_light_group2_pCube5
+    2300020: Shelf_5_shelving_and_light_group3_pCube15
+    2300022: Shelf_5_shelving_and_light_group3_pCube16
+    2300024: Shelf_5_shelving_and_light_group3_pCube17
+    2300026: Shelf_5_shelving_and_light_group3_pCube18
+    2300028: Shelf_5_shelving_and_light_group3_pCube23
+    2300030: Shelf_5_shelving_and_light_group3_pCube24
+    2300032: Shelf_5_shelving_and_light_group3_pCube25
+    2300034: Shelf_5_shelving_and_light_group3_pCube6
+    2300036: Shelf_5_shelving_and_light_group3_pCube7
+    2300038: Shelf_5_shelving_and_light_pCube11_group2
+    2300040: Shelf_5_shelving_and_light_pCube26_group3
+    2300042: Shelf_5_shelving_and_light_pCube3
+    2300044: Shelf_5_shelving_and_light_pCube8
+    2300046: Shelf_5_shelving_and_light_pCube9
+    3300000: pCube10_Shelf_5_shelving_and_light
+    3300002: Shelf_5_shelving_and_light_group2_pCube12
+    3300004: Shelf_5_shelving_and_light_group2_pCube13
+    3300006: Shelf_5_shelving_and_light_group2_pCube14
+    3300008: Shelf_5_shelving_and_light_group2_pCube19
+    3300010: Shelf_5_shelving_and_light_group2_pCube20
+    3300012: Shelf_5_shelving_and_light_group2_pCube21
+    3300014: Shelf_5_shelving_and_light_group2_pCube22
+    3300016: Shelf_5_shelving_and_light_group2_pCube4
+    3300018: Shelf_5_shelving_and_light_group2_pCube5
+    3300020: Shelf_5_shelving_and_light_group3_pCube15
+    3300022: Shelf_5_shelving_and_light_group3_pCube16
+    3300024: Shelf_5_shelving_and_light_group3_pCube17
+    3300026: Shelf_5_shelving_and_light_group3_pCube18
+    3300028: Shelf_5_shelving_and_light_group3_pCube23
+    3300030: Shelf_5_shelving_and_light_group3_pCube24
+    3300032: Shelf_5_shelving_and_light_group3_pCube25
+    3300034: Shelf_5_shelving_and_light_group3_pCube6
+    3300036: Shelf_5_shelving_and_light_group3_pCube7
+    3300038: Shelf_5_shelving_and_light_pCube11_group2
+    3300040: Shelf_5_shelving_and_light_pCube26_group3
+    3300042: Shelf_5_shelving_and_light_pCube3
+    3300044: Shelf_5_shelving_and_light_pCube8
+    3300046: Shelf_5_shelving_and_light_pCube9
+    4300000: pCube10_Shelf_5_shelving_and_light
+    4300002: Shelf_5_shelving_and_light_group2_pCube12
+    4300004: Shelf_5_shelving_and_light_group2_pCube13
+    4300006: Shelf_5_shelving_and_light_group2_pCube14
+    4300008: Shelf_5_shelving_and_light_group2_pCube19
+    4300010: Shelf_5_shelving_and_light_group2_pCube20
+    4300012: Shelf_5_shelving_and_light_group2_pCube21
+    4300014: Shelf_5_shelving_and_light_group2_pCube22
+    4300016: Shelf_5_shelving_and_light_group2_pCube4
+    4300018: Shelf_5_shelving_and_light_group2_pCube5
+    4300020: Shelf_5_shelving_and_light_group3_pCube15
+    4300022: Shelf_5_shelving_and_light_group3_pCube16
+    4300024: Shelf_5_shelving_and_light_group3_pCube17
+    4300026: Shelf_5_shelving_and_light_group3_pCube18
+    4300028: Shelf_5_shelving_and_light_group3_pCube23
+    4300030: Shelf_5_shelving_and_light_group3_pCube24
+    4300032: Shelf_5_shelving_and_light_group3_pCube25
+    4300034: Shelf_5_shelving_and_light_group3_pCube6
+    4300036: Shelf_5_shelving_and_light_group3_pCube7
+    4300038: Shelf_5_shelving_and_light_pCube11_group2
+    4300040: Shelf_5_shelving_and_light_pCube26_group3
+    4300042: Shelf_5_shelving_and_light_pCube3
+    4300044: Shelf_5_shelving_and_light_pCube8
+    4300046: Shelf_5_shelving_and_light_pCube9
+    6400000: pCube10_Shelf_5_shelving_and_light
+    6400002: Shelf_5_shelving_and_light_group2_pCube12
+    6400004: Shelf_5_shelving_and_light_group2_pCube13
+    6400006: Shelf_5_shelving_and_light_group2_pCube14
+    6400008: Shelf_5_shelving_and_light_group2_pCube19
+    6400010: Shelf_5_shelving_and_light_group2_pCube20
+    6400012: Shelf_5_shelving_and_light_group2_pCube21
+    6400014: Shelf_5_shelving_and_light_group2_pCube22
+    6400016: Shelf_5_shelving_and_light_group2_pCube4
+    6400018: Shelf_5_shelving_and_light_group2_pCube5
+    6400020: Shelf_5_shelving_and_light_group3_pCube15
+    6400022: Shelf_5_shelving_and_light_group3_pCube16
+    6400024: Shelf_5_shelving_and_light_group3_pCube17
+    6400026: Shelf_5_shelving_and_light_group3_pCube18
+    6400028: Shelf_5_shelving_and_light_group3_pCube23
+    6400030: Shelf_5_shelving_and_light_group3_pCube24
+    6400032: Shelf_5_shelving_and_light_group3_pCube25
+    6400034: Shelf_5_shelving_and_light_group3_pCube6
+    6400036: Shelf_5_shelving_and_light_group3_pCube7
+    6400038: Shelf_5_shelving_and_light_pCube11_group2
+    6400040: Shelf_5_shelving_and_light_pCube26_group3
+    6400042: Shelf_5_shelving_and_light_pCube3
+    6400044: Shelf_5_shelving_and_light_pCube8
+    6400046: Shelf_5_shelving_and_light_pCube9
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 2
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

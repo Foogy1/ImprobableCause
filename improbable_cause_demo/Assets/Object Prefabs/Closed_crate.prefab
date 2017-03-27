@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 23850611257548450}
   - component: {fileID: 114234781404554110}
   - component: {fileID: 65515470428579892}
+  - component: {fileID: 114213708200396512}
   m_Layer: 0
   m_Name: Closed_crate
   m_TagString: Untagged
@@ -368,8 +369,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1212212881820700}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07, y: 8.95, z: 4.96}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
+  m_LocalPosition: {x: 5.9, y: 0.55, z: 13.150597}
+  m_LocalScale: {x: 0.06, y: 0.055, z: 0.06}
   m_Children:
   - {fileID: 4447781160051506}
   - {fileID: 4467117937424490}
@@ -1327,6 +1328,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 45.69, y: 39.2, z: 52.45}
   m_Center: {x: 6.88, y: 17.7, z: 1.71}
+--- !u!114 &114213708200396512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212212881820700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12582ac759593c44b99d740e9f75684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 0
 --- !u!114 &114234781404554110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1338,7 +1351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0412cc528fdaa4ebb321d0a6a2b776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 0}
   defaultMaterial: {fileID: 0}
   canPlaceMaterial: {fileID: 0}
   cannotPlaceMaterial: {fileID: 0}

@@ -11,7 +11,9 @@ public class GameButtons : MonoBehaviour
     {
         Start,
         Pause,
-        Restart
+        Restart,
+        LeftCamera,
+        RightCamera
     }
 
     private void Start()
@@ -31,8 +33,14 @@ public class GameButtons : MonoBehaviour
             case BUTTONTYPE.Restart:
                 button.onClick.AddListener(() => restart());
                 break;
+            case BUTTONTYPE.LeftCamera:
+                break;
+            case BUTTONTYPE.RightCamera:
+                break;
+
         }
     }
+
 
     public void pauseAllActions()
     {

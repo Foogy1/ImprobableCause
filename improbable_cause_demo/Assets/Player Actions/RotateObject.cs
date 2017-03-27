@@ -16,30 +16,31 @@ public class RotateObject : MonoBehaviour
     {
         GameObject obj = heldObject.getHeldObject();
         if (!obj) return;
+        Quaternion rot = obj.transform.rotation;
         if (Input.GetKeyDown(KeyCode.W))
         {
-            float rotation = ((obj.transform.rotation.x + ROTATION) % ROTATION) * ROTATION;
-            obj.transform.Rotate(rotation, obj.transform.rotation.y, obj.transform.rotation.z);
+            float rotation = ((rot.x + ROTATION) % ROTATION) * ROTATION;
+           // obj.transform.Rotate(rotation, obj.transform.localEulerAngles.y obj.transform.z);
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             float rotation = ((obj.transform.rotation.x - ROTATION) % ROTATION) * ROTATION;
-            obj.transform.Rotate(rotation, obj.transform.rotation.y, obj.transform.rotation.z);
+            obj.transform.rotation = new Quaternion(rotation, rot.y, rot.z, rot.w);
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             float rotation = ((obj.transform.rotation.z + ROTATION) % ROTATION) * ROTATION;
-            obj.transform.Rotate(obj.transform.rotation.x, obj.transform.rotation.y, rotation);
+            obj.transform.rotation = new Quaternion(rotation, rot.y, rot.z, rot.w);
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             float rotation = ((obj.transform.rotation.z - ROTATION) % ROTATION) * ROTATION;
-            obj.transform.Rotate(obj.transform.rotation.x, obj.transform.rotation.y, obj.transform.rotation.z - ROTATION);
+            obj.transform.rotation = new Quaternion(rotation, rot.y, rot.z, rot.w);
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
             // Reset object rotation.
-            obj.transform.Rotate(0, 0, 0);
+            obj.transform.localRotation = new Quaternion(0, 0, 0, 0);
         }
     }
 }
