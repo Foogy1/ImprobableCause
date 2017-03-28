@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fan : MonoBehaviour {
-    public float speed = 4.0f;
+    public float maxSpeed = 4.0f;
+	public float TorquePerTick = 26000.0f;
 	// Use this for initialization
+	private Rigidbody rb;
 	void Start () {
 		
+		rb = transform.GetComponent<Rigidbody>();
+		if(rb == null)
+			Debug.LogException (new UnityException("Error: submesh component not found. Please attach one."));
 	}
 	
 	// Update is called once per frame
-	void Update () {
-       // float speed = 4.0f;
-        transform.RotateAround(transform.position, transform.up, Time.deltaTime * (-1f * speed));
-       // transform.Rotate(Vector3.right * Time.deltaTime * speed);
-
+	void FixedUpdate () {
+		if(rb != null && rb.angularVelocity.magnitude <= maxSpeed)
+			rb.AddTorque(new Vector3(0.0f, TorquePerTick, 0.0f));
     }
 }
