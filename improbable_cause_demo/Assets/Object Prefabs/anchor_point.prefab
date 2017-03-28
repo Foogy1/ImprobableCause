@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65094495034730450}
   - component: {fileID: 23439312576918978}
   - component: {fileID: 114849686461068830}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: anchor_point
   m_TagString: AnchorPoint
   m_Icon: {fileID: 0}
@@ -108,3 +108,5 @@ MonoBehaviour:
   canPlaceMaterial: {fileID: 0}
   cannotPlaceMaterial: {fileID: 0}
   side: 2
+  isPropeller: 0
+  isOnFulcram: 0

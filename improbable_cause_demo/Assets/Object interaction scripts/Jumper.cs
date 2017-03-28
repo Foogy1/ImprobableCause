@@ -9,7 +9,7 @@ public class Jumper : IUsable
     public GameObject originalTargetPoint;
     private Vector3 startPos;
     private Vector3 endPos;
-    private bool startThrow = true;
+    private bool startThrow = false;
     private float cTime = 0;
 
     [Tooltip("Time between jumps")]

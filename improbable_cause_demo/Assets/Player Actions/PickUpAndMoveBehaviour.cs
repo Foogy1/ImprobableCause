@@ -63,6 +63,7 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
     private void pickUpObject()
     {
         RaycastHit hit;
+     //   int layerMask = LayerMask.GetMask("AnchorPoint");
         // Shoot raycast based on mouse position.
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 10000))
@@ -70,21 +71,32 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             GameObject target = hit.transform.gameObject;
             IUsable usable = target.GetComponent<IUsable>();
             AnchorPoint anchorPoint = target.GetComponent<AnchorPoint>();
+            Stackable stackable = target.GetComponent<Stackable>();
             // If the raycast hit an anchor point, check to make sure the anchor point is not occupied.
-            if (anchorPoint)
-            {
-                if (anchorPoint.IsOccupied == true)
+            if (stackable) {
+                if (stackable.getSpawnedAnchorPoint() != null)
                 {
-                    return;
+                    if (stackable.getSpawnedAnchorPoint().GetComponent<AnchorPoint>().IsOccupied == true)
+                    {
+                        Debug.Log("IsOCcupied");
+                        return;
+                    }
                 }
+              
+                   Debug.Log("picking up object");
+                   heldObject.pickUpObject(target);
+                   showAnchorPoints();
+                
             }
-            if (usable)
+           else if (usable)
             {
                 heldObject.pickUpObject(target);
                 showAnchorPoints();
             }
         }
     }
+
+    void pickup() { }
 
     private void DropHeldObject()
     {

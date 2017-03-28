@@ -15,7 +15,8 @@ public class AnchorPoint : MonoBehaviour
 
     [Tooltip("Specifies where an object will be placed")]
     public SIDE side;
-
+    public bool isPropeller = false;
+    public bool isOnFulcram = false;
     private bool isOccupied = false;
     protected Renderer rend;
 
@@ -56,7 +57,7 @@ public class AnchorPoint : MonoBehaviour
         return new Vector3(0, 0, 0);
     }
 
-    protected virtual void Start()
+    public virtual void Start()
     {
         rend = GetComponent<Renderer>();
         defaultMaterial = GetComponent<Material>();
