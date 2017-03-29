@@ -37,4 +37,4 @@ Material:
     m_Colors:
     - first:
         name: _OutlineCol
-      second: {r: 1, g: 0, b: 0.93103456, a: 1}
+      second: {r: 0.6606133, g: 0.13721886, b: 0.6911765, a: 1}

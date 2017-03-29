@@ -83,16 +83,17 @@
   <ItemGroup>
     <Compile Include="Assets\Audio\HitSound.cs" />
     <Compile Include="Assets\Camera Actions\CameraBehaviour.cs" />
-    <Compile Include="Assets\CameraController.cs" />
+    <Compile Include="Assets\Camera Actions\CameraController.cs" />
     <Compile Include="Assets\Easy Outline\Behaviours\OutlineSystem.cs" />
-    <Compile Include="Assets\Fan.cs" />
     <Compile Include="Assets\In-Game Button Scripts\GameButtons.cs" />
     <Compile Include="Assets\Object Prefabs\Topple.cs" />
     <Compile Include="Assets\Object interaction scripts\AnchorPoint.cs" />
+    <Compile Include="Assets\Object interaction scripts\Fan.cs" />
     <Compile Include="Assets\Object interaction scripts\IUsable.cs" />
     <Compile Include="Assets\Object interaction scripts\Jumper.cs" />
     <Compile Include="Assets\Object interaction scripts\Roller.cs" />
     <Compile Include="Assets\Object interaction scripts\Stackable.cs" />
+    <Compile Include="Assets\Object interaction scripts\bucket.cs" />
     <Compile Include="Assets\Player Actions\AssignMaterial.cs" />
     <Compile Include="Assets\Player Actions\GUIComponents.cs" />
     <Compile Include="Assets\Player Actions\GridSpawner.cs" />
@@ -104,7 +105,6 @@
     <Compile Include="Assets\Player Actions\SimpleRotate.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\LevelReset.cs" />
-    <Compile Include="Assets\bucket.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Easy Outline\Outline.shader" />
