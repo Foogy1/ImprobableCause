@@ -24,8 +24,8 @@ public class IUsable : MonoBehaviour
     public enum ObjectType
     {
         Stacker,
-        Jumper,
-        Propeller,
+        Throwable,
+        Launcher,
         Domino
     }
 

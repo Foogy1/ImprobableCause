@@ -5,18 +5,14 @@ public class Jumper : IUsable
     /* Inherits from the IUsable class. This item will jump in place or between two anchor points.
      The trajectory can be modified in the inspector.*/
     private GameObject startingPoint;
-    private GameObject targetPoint;
-    public GameObject originalTargetPoint;
+    Vector3 targetPoint;
+  //  public GameObject originalTargetPoint;
     private Vector3 startPos;
-    private Vector3 endPos;
+    
     private bool startThrow = false;
     private float cTime = 0;
-
-    [Tooltip("Time between jumps")]
-    public float timer = 10;
-
-    [Tooltip("If the object jumps between 2 or more points, this is the time between jumps.")]
-    public float cooldown = 10;
+    public float distance = 6.0f;
+    public float blockSize = 2.5f;
 
     [Tooltip("Minimum distance needed for object to 'snap' to position.")]
     public float minDistance = 0.5f;
@@ -27,87 +23,51 @@ public class Jumper : IUsable
     [Tooltip("If set to true, object will jump in place indefinitely.")]
     public bool inPlace = false;
 
-    [Tooltip("Object will do action on timer.")]
-    public bool onTimer = false;
-
     public override void Start()
-    {
-        objectType = ObjectType.Jumper;
-        targetPoint = originalTargetPoint;
-        endPos = targetPoint.transform.position;
+    {        objectType = ObjectType.Launcher;
+
+        //targetPoint = null;
+      //  endPos = targetPoint.transform.position;
     }
 
+    public void StartCatapult()
+    {
+        Debug.Log("StartCatapult");
+        startThrow = true;
+    }
     private void Update()
     {
-        if (anchorPoint)
-        {
             if (startThrow)
             {
+        
                 // Checks to make sure the anchor point that is it's target is unoccupied (including the anchor point that
                 // it launches from). The trajectory is calculated and the object moves to the new location (or stays in the
                 // same place if inPlace = true.
                 cTime += 0.04f;
-                Vector3 currentPos = Vector3.Lerp(startingPoint.transform.position, targetPoint.transform.position, cTime);
+                 Vector3 startingPosition = transform.position;
+                Vector3 currentPos = Vector3.Lerp(startingPosition, targetPoint, cTime);
                 currentPos.y += trajectoryHeight * Mathf.Sin(Mathf.Clamp01(cTime) * Mathf.PI);
                 transform.position = currentPos;
 
-                if (transform.position == endPos || getDistance(targetPoint) < minDistance)
+                if (transform.position == targetPoint)
                 {
-                    move(targetPoint);
+              //      move(targetPoint);
                     startThrow = false;
                     cTime = 0;
-                    GameObject tempPos = targetPoint;
-                    targetPoint = startingPoint;
-                    startingPoint = tempPos;
                 }
             }
-            else if (onTimer)
-            {
-                timer -= Time.deltaTime;
-                if (timer <= 0)
-                {
-                    startThrow = true;
-                    timer = cooldown;
-                }
-            }
-            if (targetPoint.GetComponent<AnchorPoint>().IsOccupied == true) return;
-        }
+           // if (targetPoint.GetComponent<AnchorPoint>().IsOccupied == true) return;
     }
 
-    public void move(GameObject dropLocation)
+    public void move(Vector3 dropLocation)
     {
         startingPoint.GetComponent<AnchorPoint>().IsOccupied = false;
-        if (dropLocation.GetComponent<AnchorPoint>().IsOccupied == false || inPlace)
-        {
+ 
             gameObject.layer = DEFAULT_LAYER;
-            gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
-            dropLocation.GetComponent<AnchorPoint>().setObject();
-        }
+            gameObject.transform.position = dropLocation;
+            
     }
 
-    public override void place(GameObject dropLocation, AnchorPoint anchorPoint)
-    {
-        if (!inPlace)
-        {
-            startingPoint = dropLocation;
-            targetPoint = originalTargetPoint;
-        }
-        else
-        {
-            startingPoint = dropLocation;
-            targetPoint = dropLocation;
-        }
-        // Stops moving object.
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        gameObject.layer = DEFAULT_LAYER;
-        gameObject.transform.position = anchorPoint.GetPosition(GetComponent<Renderer>().bounds.size.y);
-        startThrow = true;
-        // Resets the timer if necessary.
-        if (onTimer)
-        {
-            timer = cooldown;
-        }
-    }
 
     public override void pickUp()
     {
@@ -123,10 +83,37 @@ public class Jumper : IUsable
         }
     }
 
-    // Gets Euclidean distance between the current object's position and the target.
-    private float getDistance(GameObject go)
+    public override void place(GameObject dropLocation, AnchorPoint anchorPoint)
     {
-        float distance = Vector3.Distance(transform.position, go.transform.position);
+        this.anchorPoint = anchorPoint;
+        gameObject.layer = DEFAULT_LAYER;
+        Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
+        //gameObject.transform.localRotation = dropLocation.transform.localRotation;
+        gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
+        bucket bucket = dropLocation.GetComponent<bucket>();
+        startingPoint = dropLocation;
+        if (bucket)
+        {
+            bucket.changeAngle();
+            targetPoint = transform.position;
+            targetPoint.z = transform.position.z + (distance * blockSize);
+            startThrow = true;
+        }
+        try
+        {
+            gameObject.GetComponent<HitSound>().PlaySound(gameObject);
+        }
+        catch
+        {
+            Debug.LogError("You have not attached the HitSound Script to this object");
+        }
+
+    }
+
+    // Gets Euclidean distance between the current object's position and the target.
+    private float getDistance(Vector3 other)
+    {
+        float distance = Vector3.Distance(transform.position, transform.position);
         return distance;
     }
 }

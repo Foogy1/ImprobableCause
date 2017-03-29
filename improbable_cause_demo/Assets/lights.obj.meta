@@ -1,0 +1,207 @@
+fileFormatVersion: 2
+guid: 0936f907971273945822a4f82a996dd8
+timeCreated: 1490684634
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: handle_1_Stage_Lights_pCylinder1
+    100002: handle_1_Stage_Lights_pCylinder2
+    100004: //RootNode
+    100006: pCube29_handle_1_Stage_Lights
+    100008: Stage_Lights_handle_2_pCylinder1
+    100010: Stage_Lights_handle_2_pCylinder2
+    100012: Stage_Lights_handle_3_pCylinder1
+    100014: Stage_Lights_handle_3_pCylinder2
+    100016: Stage_Lights_handle_4_pCylinder1
+    100018: Stage_Lights_handle_4_pCylinder2
+    100020: Stage_Lights_handle_5_pCylinder1
+    100022: Stage_Lights_handle_5_pCylinder2
+    100024: Stage_Lights_light_1_pCylinder3
+    100026: Stage_Lights_light_2_pCylinder3
+    100028: Stage_Lights_light_3_pCylinder3
+    100030: Stage_Lights_light_4_pCylinder3
+    100032: Stage_Lights_light_5_pCylinder3
+    100034: Stage_Lights_pCube28
+    100036: Stage_Lights_pCube29_handle_2
+    100038: Stage_Lights_pCube29_handle_3
+    100040: Stage_Lights_pCube29_handle_4
+    100042: Stage_Lights_pCube29_handle_5
+    100044: Stage_Lights_pCube30_light_1
+    100046: Stage_Lights_pCube30_light_2
+    100048: Stage_Lights_pCube30_light_3
+    100050: Stage_Lights_pCube30_light_4
+    100052: Stage_Lights_pCube30_light_5
+    400000: handle_1_Stage_Lights_pCylinder1
+    400002: handle_1_Stage_Lights_pCylinder2
+    400004: //RootNode
+    400006: pCube29_handle_1_Stage_Lights
+    400008: Stage_Lights_handle_2_pCylinder1
+    400010: Stage_Lights_handle_2_pCylinder2
+    400012: Stage_Lights_handle_3_pCylinder1
+    400014: Stage_Lights_handle_3_pCylinder2
+    400016: Stage_Lights_handle_4_pCylinder1
+    400018: Stage_Lights_handle_4_pCylinder2
+    400020: Stage_Lights_handle_5_pCylinder1
+    400022: Stage_Lights_handle_5_pCylinder2
+    400024: Stage_Lights_light_1_pCylinder3
+    400026: Stage_Lights_light_2_pCylinder3
+    400028: Stage_Lights_light_3_pCylinder3
+    400030: Stage_Lights_light_4_pCylinder3
+    400032: Stage_Lights_light_5_pCylinder3
+    400034: Stage_Lights_pCube28
+    400036: Stage_Lights_pCube29_handle_2
+    400038: Stage_Lights_pCube29_handle_3
+    400040: Stage_Lights_pCube29_handle_4
+    400042: Stage_Lights_pCube29_handle_5
+    400044: Stage_Lights_pCube30_light_1
+    400046: Stage_Lights_pCube30_light_2
+    400048: Stage_Lights_pCube30_light_3
+    400050: Stage_Lights_pCube30_light_4
+    400052: Stage_Lights_pCube30_light_5
+    2300000: handle_1_Stage_Lights_pCylinder1
+    2300002: handle_1_Stage_Lights_pCylinder2
+    2300004: pCube29_handle_1_Stage_Lights
+    2300006: Stage_Lights_handle_2_pCylinder1
+    2300008: Stage_Lights_handle_2_pCylinder2
+    2300010: Stage_Lights_handle_3_pCylinder1
+    2300012: Stage_Lights_handle_3_pCylinder2
+    2300014: Stage_Lights_handle_4_pCylinder1
+    2300016: Stage_Lights_handle_4_pCylinder2
+    2300018: Stage_Lights_handle_5_pCylinder1
+    2300020: Stage_Lights_handle_5_pCylinder2
+    2300022: Stage_Lights_light_1_pCylinder3
+    2300024: Stage_Lights_light_2_pCylinder3
+    2300026: Stage_Lights_light_3_pCylinder3
+    2300028: Stage_Lights_light_4_pCylinder3
+    2300030: Stage_Lights_light_5_pCylinder3
+    2300032: Stage_Lights_pCube28
+    2300034: Stage_Lights_pCube29_handle_2
+    2300036: Stage_Lights_pCube29_handle_3
+    2300038: Stage_Lights_pCube29_handle_4
+    2300040: Stage_Lights_pCube29_handle_5
+    2300042: Stage_Lights_pCube30_light_1
+    2300044: Stage_Lights_pCube30_light_2
+    2300046: Stage_Lights_pCube30_light_3
+    2300048: Stage_Lights_pCube30_light_4
+    2300050: Stage_Lights_pCube30_light_5
+    3300000: handle_1_Stage_Lights_pCylinder1
+    3300002: handle_1_Stage_Lights_pCylinder2
+    3300004: pCube29_handle_1_Stage_Lights
+    3300006: Stage_Lights_handle_2_pCylinder1
+    3300008: Stage_Lights_handle_2_pCylinder2
+    3300010: Stage_Lights_handle_3_pCylinder1
+    3300012: Stage_Lights_handle_3_pCylinder2
+    3300014: Stage_Lights_handle_4_pCylinder1
+    3300016: Stage_Lights_handle_4_pCylinder2
+    3300018: Stage_Lights_handle_5_pCylinder1
+    3300020: Stage_Lights_handle_5_pCylinder2
+    3300022: Stage_Lights_light_1_pCylinder3
+    3300024: Stage_Lights_light_2_pCylinder3
+    3300026: Stage_Lights_light_3_pCylinder3
+    3300028: Stage_Lights_light_4_pCylinder3
+    3300030: Stage_Lights_light_5_pCylinder3
+    3300032: Stage_Lights_pCube28
+    3300034: Stage_Lights_pCube29_handle_2
+    3300036: Stage_Lights_pCube29_handle_3
+    3300038: Stage_Lights_pCube29_handle_4
+    3300040: Stage_Lights_pCube29_handle_5
+    3300042: Stage_Lights_pCube30_light_1
+    3300044: Stage_Lights_pCube30_light_2
+    3300046: Stage_Lights_pCube30_light_3
+    3300048: Stage_Lights_pCube30_light_4
+    3300050: Stage_Lights_pCube30_light_5
+    4300000: handle_1_Stage_Lights_pCylinder1
+    4300002: handle_1_Stage_Lights_pCylinder2
+    4300004: pCube29_handle_1_Stage_Lights
+    4300006: Stage_Lights_handle_2_pCylinder1
+    4300008: Stage_Lights_handle_2_pCylinder2
+    4300010: Stage_Lights_handle_3_pCylinder1
+    4300012: Stage_Lights_handle_3_pCylinder2
+    4300014: Stage_Lights_handle_4_pCylinder1
+    4300016: Stage_Lights_handle_4_pCylinder2
+    4300018: Stage_Lights_handle_5_pCylinder1
+    4300020: Stage_Lights_handle_5_pCylinder2
+    4300022: Stage_Lights_light_1_pCylinder3
+    4300024: Stage_Lights_light_2_pCylinder3
+    4300026: Stage_Lights_light_3_pCylinder3
+    4300028: Stage_Lights_light_4_pCylinder3
+    4300030: Stage_Lights_light_5_pCylinder3
+    4300032: Stage_Lights_pCube28
+    4300034: Stage_Lights_pCube29_handle_2
+    4300036: Stage_Lights_pCube29_handle_3
+    4300038: Stage_Lights_pCube29_handle_4
+    4300040: Stage_Lights_pCube29_handle_5
+    4300042: Stage_Lights_pCube30_light_1
+    4300044: Stage_Lights_pCube30_light_2
+    4300046: Stage_Lights_pCube30_light_3
+    4300048: Stage_Lights_pCube30_light_4
+    4300050: Stage_Lights_pCube30_light_5
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

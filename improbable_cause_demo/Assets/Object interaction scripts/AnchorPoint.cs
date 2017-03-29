@@ -32,7 +32,7 @@ public class AnchorPoint : MonoBehaviour
 
  
     // Places object based on position and size.
-    public Vector3 GetPosition(float objectSize)
+    virtual public Vector3 GetPosition(float objectSize)
     {
         if (side == SIDE.FRONT)
         {
@@ -69,7 +69,7 @@ public class AnchorPoint : MonoBehaviour
         set { isOccupied = value; }
     }
 
-    public void setObject()
+    public virtual void setObject()
     {
         isOccupied = true;
     }
