@@ -32,7 +32,7 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
         {
             try
             {
-                heldObject.getHeldObject().GetComponent<Topple>().SLERP(90.0f);
+                heldObject.getHeldObject().GetComponent<Topple>().SLERP(new Vector2(1, 1));
             }
             catch
             {
