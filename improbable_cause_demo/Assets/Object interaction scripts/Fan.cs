@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fan : MonoBehaviour {
     public float maxSpeed = 4.0f;
-	public float TorquePerTick = 26000.0f;
+	//public float TorquePerTick = 26000.0f;
 	// Use this for initialization
 	private Rigidbody rb;
 	void Start () {
@@ -16,7 +16,7 @@ public class Fan : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		//if(rb != null && rb.angularVelocity.magnitude <= maxSpeed)
-			rb.AddTorque(new Vector3(0.0f, TorquePerTick, 0.0f));
+        //if(rb != null && rb.angularVelocity.magnitude <= maxSpeed)
+        transform.RotateAround(transform.position, transform.up, Time.deltaTime * maxSpeed);
     }
 }

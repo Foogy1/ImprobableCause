@@ -34,7 +34,7 @@ public class bucket : AnchorPoint {
          //   Debug.Log(timer);
             if(timer <= 0)
             {
-                Debug.Log("Timer is less than 0");
+            //    Debug.Log("Timer is less than 0");
                 startTimer = false;
                 timer = timerDuration;
                  transform.rotation = Quaternion.Lerp(new Quaternion(45.0f, 0, 0, 0), new Quaternion(0, 0, 0, 0), Time.time * speed);

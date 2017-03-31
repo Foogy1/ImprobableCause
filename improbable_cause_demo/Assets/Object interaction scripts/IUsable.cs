@@ -11,6 +11,7 @@ public class IUsable : MonoBehaviour
     protected int IGNORE_RAYCAST_LAYER = 2;
     protected int DEFAULT_LAYER = 0;
     public string description = "";
+    public float offset;
     private Vector3 startingPosition;
     private Quaternion startingRotation;
 
@@ -19,7 +20,7 @@ public class IUsable : MonoBehaviour
 
     public string GetDescription()
     {
-       // Debug.Log(description);
+        // Debug.Log(description);
         return description;
     }
 
@@ -45,7 +46,7 @@ public class IUsable : MonoBehaviour
 
     public void Restart()
     {
-       // transform.position = startingPosition;
+        // transform.position = startingPosition;
         transform.rotation = startingRotation;
     }
 
@@ -61,20 +62,43 @@ public class IUsable : MonoBehaviour
 
     public virtual void place(GameObject dropLocation, AnchorPoint anchorPoint)
     {
-        this.anchorPoint = anchorPoint;
-        gameObject.layer = DEFAULT_LAYER;
-        Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
-        //gameObject.transform.localRotation = dropLocation.transform.localRotation;
-        gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
-        try
+
+        if (gameObject.tag == "DominoCollision")
         {
-            gameObject.GetComponent<HitSound>().PlaySound(gameObject);
+            this.anchorPoint = anchorPoint;
+            gameObject.layer = DEFAULT_LAYER;
+            Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
+            //gameObject.transform.localRotation = dropLocation.transform.localRotation;
+            gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1.0f, gameObject.transform.position.z);
+            //gameObject.transform.position.y += offset;
+            try
+            {
+                gameObject.GetComponent<HitSound>().PlaySound(gameObject);
+            }
+            catch
+            {
+                Debug.LogError("You have not attached the HitSound Script to this object");
+            }
         }
-        catch
+
+        else
         {
-            Debug.LogError("You have not attached the HitSound Script to this object");
+
+            this.anchorPoint = anchorPoint;
+            gameObject.layer = DEFAULT_LAYER;
+            Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
+            //gameObject.transform.localRotation = dropLocation.transform.localRotation;
+            gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
+            try
+            {
+                gameObject.GetComponent<HitSound>().PlaySound(gameObject);
+            }
+            catch
+            {
+                Debug.LogError("You have not attached the HitSound Script to this object");
+            }
         }
-        
     }
 
     public void restart()

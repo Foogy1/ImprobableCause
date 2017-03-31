@@ -15,6 +15,7 @@ public class HitSound : MonoBehaviour {
 
     public void PlaySound(GameObject Object)
     {
+        Debug.Log("Play sound");
         Source = Object.GetComponent<AudioSource>();
         try
         {

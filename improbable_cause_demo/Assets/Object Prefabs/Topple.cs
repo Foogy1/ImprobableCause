@@ -35,8 +35,8 @@ public class Topple : MonoBehaviour {
         float forceAngle = Mathf.Atan2(force.x, force.y);
         float angle = forceAngle - transform.localRotation.z;
 
-        Debug.Log(forceAngle);
-        Debug.Log(angle);
+       //// Debug.Log(forceAngle);
+       /// Debug.Log(angle);
 
         if (angle < 180 * Mathf.Deg2Rad)
             angle = -90;
@@ -65,10 +65,10 @@ public class Topple : MonoBehaviour {
     // code that gray wrote
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("BEFORE COLLISION");
+      //  Debug.Log("BEFORE COLLISION");
         if (collision.gameObject.tag == "DominoCollision") 
         {
-            Debug.Log("COLLISION!!!!");
+          //  Debug.Log("COLLISION!!!!");
             // collision with other domino
             if (IsTriggered == false)
             {
