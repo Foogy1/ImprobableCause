@@ -65,22 +65,26 @@ public class Topple : MonoBehaviour {
     // code that gray wrote
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("COLLISION!!!!");
-        // collision with other domino
-        if (IsTriggered == false)
+        Debug.Log("BEFORE COLLISION");
+        if (collision.gameObject.tag == "DominoCollision") 
         {
-            // get the vector from this domino to the other
-            Vector3 directionalForce = new Vector3();
-            directionalForce = collision.transform.position - transform.position;
-            Vector2 orthoVect = new Vector2(directionalForce.x, directionalForce.z);
-            gameObject.GetComponent<Topple>().SLERP(orthoVect);
-            // check that the other domino is not toppling
-            if (collision.gameObject.GetComponent<Topple>() != null)
+            Debug.Log("COLLISION!!!!");
+            // collision with other domino
+            if (IsTriggered == false)
             {
-                if (!collision.gameObject.GetComponent<Topple>().IsTriggered)
+                // get the vector from this domino to the other
+                Vector3 directionalForce = new Vector3();
+                directionalForce = collision.transform.position - transform.position;
+                Vector2 orthoVect = new Vector2(directionalForce.x, directionalForce.z);
+                gameObject.GetComponent<Topple>().SLERP(orthoVect);
+                // check that the other domino is not toppling
+                if (collision.gameObject.GetComponent<Topple>() != null)
                 {
-                    Debug.Log("Triggering");
-                    collision.gameObject.GetComponent<Topple>().SLERP(orthoVect);
+                    if (!collision.gameObject.GetComponent<Topple>().IsTriggered)
+                    {
+                        Debug.Log("Triggering");
+                        collision.gameObject.GetComponent<Topple>().SLERP(orthoVect);
+                    }
                 }
             }
         }

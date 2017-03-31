@@ -45,7 +45,7 @@ public class IUsable : MonoBehaviour
 
     public void Restart()
     {
-        transform.position = startingPosition;
+       // transform.position = startingPosition;
         transform.rotation = startingRotation;
     }
 
