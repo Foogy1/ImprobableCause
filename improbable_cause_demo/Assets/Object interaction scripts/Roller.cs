@@ -30,8 +30,8 @@ public class Roller : IUsable {
     // Use this for initialization
     public override void Start () {
         base.Start();
-        startingPosition = transform.position;
-        startingRotation = transform.rotation;
+       // startingPosition = transform.position;
+       // startingRotation = transform.rotation;
         rb = GetComponent<Rigidbody>();
 	}
 	
