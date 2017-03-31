@@ -15,6 +15,8 @@ public class Topple : MonoBehaviour {
     }
 
     void Start () {
+     //   startingPosition = transform.position;
+     //   startingRotation = transform.rotation;
         TargetRotation = this.transform.rotation; 
 	}
 
