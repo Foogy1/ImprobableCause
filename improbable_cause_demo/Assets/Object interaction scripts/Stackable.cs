@@ -32,6 +32,14 @@ public class Stackable : IUsable
 		//currentCrateLocation.x += 0.5f;
 		currentSpawnedAnchorPoint = Instantiate(spawnableAnchorPointPrefab, currentCrateLocation, Quaternion.identity);
 		currentSpawnedAnchorPoint.transform.parent = gameObject.transform;
+		try
+		{
+			gameObject.GetComponent<HitSound>().PlaySound(gameObject);
+		}
+		catch
+		{
+			Debug.LogError("You have not attached the HitSound Script to this object");
+		}
 	}    
 
 	public override void pickUp()
@@ -49,6 +57,14 @@ public class Stackable : IUsable
 		} else if (anchorPoint) {
 			anchorPoint.IsOccupied = false;
 			anchorPoint = null;
+		}
+		try
+		{
+			gameObject.GetComponent<HitSound>().PlaySoundPickUp(gameObject);
+		}
+		catch
+		{
+			Debug.LogError("You have not attached the HitSound Script to this object");
 		}
 	}
 }

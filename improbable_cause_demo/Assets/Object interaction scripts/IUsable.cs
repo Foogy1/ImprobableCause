@@ -58,6 +58,14 @@ public class IUsable : MonoBehaviour
             anchorPoint.IsOccupied = false;
             anchorPoint = null;
         }
+		try
+		{
+			gameObject.GetComponent<HitSound>().PlaySoundPickUp(gameObject);
+		}
+		catch
+		{
+			Debug.LogError("You have not attached the HitSound Script to this object");
+		}
     }
 
     public virtual void place(GameObject dropLocation, AnchorPoint anchorPoint)

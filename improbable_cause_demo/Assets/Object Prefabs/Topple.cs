@@ -6,6 +6,7 @@ public class Topple : MonoBehaviour {
     public float TurningRate = 450.0f;
     public bool IsDown;
     private bool triggerinokripperino = false;
+	private bool soundOver = false;
     private Quaternion TargetRotation;
 
     public bool IsTriggered
@@ -24,9 +25,10 @@ public class Topple : MonoBehaviour {
             this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, TargetRotation, TurningRate * Time.deltaTime);
             triggerinokripperino = true;
         }
-        if (triggerinokripperino && TargetRotation == this.transform.rotation)
+		if (triggerinokripperino && TargetRotation == this.transform.rotation && soundOver == false)
         {
             PlaySound();
+			soundOver = true;
         }
     }
 
@@ -52,7 +54,7 @@ public class Topple : MonoBehaviour {
 
     private void PlaySound()
     {
-        this.gameObject.GetComponent<HitSound>().PlaySound(this.gameObject);
+        this.gameObject.GetComponent<HitSound>().PlaySoundTopple(this.gameObject);
         triggerinokripperino = false;
     }
 
