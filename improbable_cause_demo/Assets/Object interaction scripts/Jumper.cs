@@ -24,7 +24,9 @@ public class Jumper : IUsable
     public bool inPlace = false;
 
     public override void Start()
-    {        objectType = ObjectType.Launcher;
+    {
+        base.Start();
+        objectType = ObjectType.Launcher;
 
         //targetPoint = null;
       //  endPos = targetPoint.transform.position;

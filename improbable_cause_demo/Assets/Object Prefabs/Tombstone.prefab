@@ -22,6 +22,10 @@ GameObject:
   - component: {fileID: 33019791425412866}
   - component: {fileID: 23344371385285988}
   - component: {fileID: 95647350658374718}
+  - component: {fileID: 54707917082165678}
+  - component: {fileID: 65926834906294894}
+  - component: {fileID: 114158178574144060}
+  - component: {fileID: 114727288058419338}
   m_Layer: 0
   m_Name: Tombstone
   m_TagString: Untagged
@@ -35,13 +39,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378174321616068}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 4.97, y: -0.26, z: 10}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 13.13, y: 4.59, z: 2.31}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
 --- !u!23 &23344371385285988
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -55,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3c94e207c15737b4aaec924b89ada3cf, type: 2}
+  - {fileID: 2100000, guid: 3f03be47c4081cb4fbb5c1316b7a8310, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,6 +84,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378174321616068}
   m_Mesh: {fileID: 4300000, guid: 4bf0cb0f391406d4fbe155f6d12df0b3, type: 3}
+--- !u!54 &54707917082165678
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378174321616068}
+  serializedVersion: 2
+  m_Mass: 100000000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &65926834906294894
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378174321616068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.86, y: 1.98, z: 3.1}
+  m_Center: {x: 0, y: -0.08, z: 1.52}
 --- !u!95 &95647350658374718
 Animator:
   serializedVersion: 3
@@ -97,3 +128,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114158178574144060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378174321616068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12582ac759593c44b99d740e9f75684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: A grave situation.
+  objectType: 3
+--- !u!114 &114727288058419338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378174321616068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ccd6d2d60d5724d9fa1bc2d9cd4e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurningRate: 450
+  IsDown: 0

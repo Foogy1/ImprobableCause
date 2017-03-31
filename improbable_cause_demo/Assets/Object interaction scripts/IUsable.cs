@@ -11,13 +11,15 @@ public class IUsable : MonoBehaviour
     protected int IGNORE_RAYCAST_LAYER = 2;
     protected int DEFAULT_LAYER = 0;
     public string description = "";
+    private Vector3 startingPosition;
+    private Quaternion startingRotation;
 
     [Tooltip("Object type label.")]
     public ObjectType objectType;
 
     public string GetDescription()
     {
-        Debug.Log(description);
+       // Debug.Log(description);
         return description;
     }
 
@@ -36,6 +38,15 @@ public class IUsable : MonoBehaviour
 
     public virtual void Start()
     {
+        startingPosition = transform.position;
+        startingRotation = transform.rotation;
+    }
+
+
+    public void Restart()
+    {
+        transform.position = startingPosition;
+        transform.rotation = startingRotation;
     }
 
     public virtual void pickUp()

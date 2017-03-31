@@ -5,6 +5,10 @@ using UnityEngine;
 public class bucket : AnchorPoint {
     public float offset = -25.0f;
     public GameObject catapultBucket;
+    public float timerDuration = 3.0f;
+    private float timer = 0;
+    public float speed = 1;
+    private bool startTimer = false;
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Jumper>() && IsOccupied != true)
@@ -13,6 +17,31 @@ public class bucket : AnchorPoint {
             {
                 grabObject(collision.gameObject);
             }
+        }
+    }
+
+    public override void Start()
+    {
+        base.Start();
+        timer = timerDuration;
+    }
+
+    private void Update()
+    {
+        if (startTimer)
+        {
+            timer -= Time.deltaTime;
+         //   Debug.Log(timer);
+            if(timer <= 0)
+            {
+                Debug.Log("Timer is less than 0");
+                startTimer = false;
+                timer = timerDuration;
+                 transform.rotation = Quaternion.Lerp(new Quaternion(45.0f, 0, 0, 0), new Quaternion(0, 0, 0, 0), Time.time * speed);
+                IsOccupied = false;
+
+            }
+
         }
 
     }
@@ -35,8 +64,9 @@ public class bucket : AnchorPoint {
 
    public void changeAngle()
     {
-        transform.Rotate(new Vector3(45.0f, 0, 0));
-        IsOccupied = false;
+        transform.rotation = Quaternion.Lerp(new Quaternion(0, 0, 0, 0), new Quaternion(45.0f, 0, 0, 0), Time.time * speed);
+        startTimer = true;
+      //  IsOccupied = false;
     }
 
 

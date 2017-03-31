@@ -49,11 +49,15 @@ public class GameButtons : MonoBehaviour
 
     public void startAllActions()
     {
-      
+     // foreach
     }
 
     public void restart()
     {
-        
+        Debug.Log("restart");
+      foreach(IUsable usable in iusables)
+        {
+            usable.Restart();
+        }  
     }
 }
