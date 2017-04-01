@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class GameButtons : MonoBehaviour
 {
     private IUsable[] iusables;
+	private GameObject[] anchorPoints;
     private Button button;
     public BUTTONTYPE buttonType;
     private AudioSource Source;
@@ -25,6 +26,7 @@ public class GameButtons : MonoBehaviour
         iusables = FindObjectsOfType(typeof(IUsable)) as IUsable[];
        // pauseAllActions();
         button = GetComponent<Button>();
+		anchorPoints = GameObject.FindGameObjectsWithTag ("AnchorPoint");
         switch (buttonType)
         {
             case BUTTONTYPE.Start:
@@ -67,6 +69,11 @@ public class GameButtons : MonoBehaviour
     {
         pauseAllActions();
         PlayRestartSound(this.gameObject);
+		foreach(GameObject anchorP in anchorPoints)
+		{
+			anchorP.GetComponent<AnchorPoint> ().IsOccupied = false;
+			//   usable.enabled = false;
+		}
     }
 
     public void PlayStartSound(GameObject Object)
