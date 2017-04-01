@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class QuarterFlip : MonoBehaviour {
 
@@ -19,7 +20,7 @@ public class QuarterFlip : MonoBehaviour {
 		if (this.transform.position.y > 20) {
 			Debug.Log ("called");
 			flipTime = false;
-			//EditorSceneManager.LoadScene (WinScene);
+			SceneManager.LoadScene ("WinScene", LoadSceneMode.Single);
 		}
 		if (flipTime == true) {
 			this.transform.Translate (0, .5f, 0, Space.World);
@@ -28,6 +29,7 @@ public class QuarterFlip : MonoBehaviour {
 	}
 	private void OnCollisionEnter(Collision collision)
 	{
+        Debug.Log("COINFLIPP");
 		IUsable usable = collision.gameObject.GetComponent<IUsable>();
 		if (usable) {
 			flipTime = true;

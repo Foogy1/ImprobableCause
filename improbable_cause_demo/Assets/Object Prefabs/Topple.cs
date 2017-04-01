@@ -5,15 +5,13 @@ using UnityEngine;
 public class Topple : MonoBehaviour
 {
     public float TurningRate = 450.0f;
-    public bool IsDown = false;
-    private bool triggerinokripperino = false;
-    public bool fell = false;
+    private bool isTriggered = false;
     private Quaternion TargetRotation;
     public HeldObject heldObject;
 
     public bool IsTriggered
     {
-        get { return triggerinokripperino; }
+        get { return isTriggered; }
     }
 
     void Start()
@@ -22,26 +20,8 @@ public class Topple : MonoBehaviour
         TargetRotation = this.transform.rotation;
     }
 
-    public void SetTargetRotation(Quaternion rotation)
-    {
-        TargetRotation = rotation;
-    }
-    void Update()
-    {
-        if (heldObject.getHeldObject() != this.gameObject)
-        {
-            if (TargetRotation != this.transform.localRotation)
-            {
-                this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, TargetRotation, TurningRate * Time.deltaTime);
-                triggerinokripperino = true;
-            }
-            if (triggerinokripperino && TargetRotation == this.transform.rotation && fell == false)
-            {
-              //  if(IsDown == false) { 
-                PlaySound();
-            // }
-            }
-        }
+    void Update() { 
+        
     }
 
     public void SLERP(Vector2 force)
@@ -57,19 +37,18 @@ public class Topple : MonoBehaviour
         else
             angle = 90;
 
-        if (!IsDown)
+        if (!IsTriggered)
         {
-            TargetRotation = Quaternion.AngleAxis(angle, this.transform.up) * this.transform.rotation;
-            IsDown = true;
+            TargetRotation = Quaternion.AngleAxis(angle, this.transform.up);
+            Debug.Log("changing rotation");
+            isTriggered = true; 
         }
     }
 
     private void PlaySound()
     {
-        fell = true;
-       
         this.gameObject.GetComponent<HitSound>().PlaySoundTopple(this.gameObject);
-        triggerinokripperino = false;
+        isTriggered = false;
     }
 
     private void SearchNearby()
@@ -80,19 +59,18 @@ public class Topple : MonoBehaviour
 
     // code that gray wrote
     private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("BEFORE COLLISION");
+    { 
         if (collision.gameObject.tag == "DominoCollision")
-        {
-            Debug.Log("COLLISION!!!!");
+        { 
             // collision with other domino
             if (IsTriggered == false)
             {
+                Debug.Log("IS TRIGGERED false");
                 // get the vector from this domino to the other
                 Vector3 directionalForce = new Vector3();
                 directionalForce = collision.transform.position - transform.position;
                 Vector2 orthoVect = new Vector2(directionalForce.x, directionalForce.z);
-                gameObject.GetComponent<Topple>().SLERP(orthoVect);
+                SLERP(orthoVect);
                 // check that the other domino is not toppling
                 if (collision.gameObject.GetComponent<Topple>() != null)
                 {

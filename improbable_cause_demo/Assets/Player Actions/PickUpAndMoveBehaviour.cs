@@ -47,21 +47,14 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 currentRot = this.gameObject.transform.localRotation;
-               // Debug.Log(currentRot);
+                // Debug.Log(currentRot);
                 heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y + 45, currentRot.z, Space.World);
-                if (topple)
-                {
-                    topple.SetTargetRotation(gameObject.transform.localRotation);
-                }
                 
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
                 currentRot = this.gameObject.transform.rotation;
                 heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y - 45, currentRot.z, Space.World);
-                if (topple) { 
-                topple.SetTargetRotation(gameObject.transform.localRotation);
-                   }
             }
         }
         else

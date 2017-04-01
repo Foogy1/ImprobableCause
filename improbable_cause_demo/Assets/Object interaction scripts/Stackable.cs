@@ -14,8 +14,8 @@ public class Stackable : IUsable
        // startingRotation = transform.rotation;
         Vector3 currentCrateLocation = this.transform.position; //(this.transform.position.x,
 		currentCrateLocation.y += offset;
-		currentSpawnedAnchorPoint = Instantiate(spawnableAnchorPointPrefab, currentCrateLocation, Quaternion.identity);
-		currentSpawnedAnchorPoint.transform.parent = gameObject.transform;
+		//currentSpawnedAnchorPoint = Instantiate(spawnableAnchorPointPrefab, currentCrateLocation, Quaternion.identity);
+		//currentSpawnedAnchorPoint.transform.parent = gameObject.transform;
 	}    
 
 	public GameObject getSpawnedAnchorPoint()
