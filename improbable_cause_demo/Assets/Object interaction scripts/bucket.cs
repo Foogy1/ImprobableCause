@@ -37,7 +37,7 @@ public class bucket : AnchorPoint {
             //    Debug.Log("Timer is less than 0");
                 startTimer = false;
                 timer = timerDuration;
-                 transform.rotation = Quaternion.Lerp(new Quaternion(45.0f, 0, 0, 0), new Quaternion(0, 0, 0, 0), Time.time * speed);
+                transform.localEulerAngles = new Vector3(0, 0, 0);
                 IsOccupied = false;
 
             }
@@ -64,9 +64,9 @@ public class bucket : AnchorPoint {
 
    public void changeAngle()
     {
-        transform.rotation = Quaternion.Lerp(new Quaternion(0, 0, 0, 0), new Quaternion(45.0f, 0, 0, 0), Time.time * speed);
+        transform.localEulerAngles = new Vector3(45.0f, 0, 0);
         startTimer = true;
-      //  IsOccupied = false;
+       IsOccupied = true;
     }
 
 
@@ -77,7 +77,7 @@ public class bucket : AnchorPoint {
         Jumper jumper = obj.GetComponent<Jumper>();
         if(jumper != null)
         {
-            jumper.StartCatapult();
+           // jumper.StartCatapult();
             changeAngle();
         }
     }

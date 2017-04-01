@@ -6,9 +6,9 @@ public class Jumper : IUsable
      The trajectory can be modified in the inspector.*/
     private GameObject startingPoint;
     Vector3 targetPoint;
-  //  public GameObject originalTargetPoint;
+    //  public GameObject originalTargetPoint;
     private Vector3 startPos;
-    
+
     private bool startThrow = false;
     private float cTime = 0;
     public float distance = 6.0f;
@@ -25,11 +25,10 @@ public class Jumper : IUsable
 
     public override void Start()
     {
-        base.Start();
         objectType = ObjectType.Launcher;
 
         //targetPoint = null;
-      //  endPos = targetPoint.transform.position;
+        //  endPos = targetPoint.transform.position;
     }
 
     public void StartCatapult()
@@ -39,35 +38,35 @@ public class Jumper : IUsable
     }
     private void Update()
     {
-            if (startThrow)
-            {
-        
-                // Checks to make sure the anchor point that is it's target is unoccupied (including the anchor point that
-                // it launches from). The trajectory is calculated and the object moves to the new location (or stays in the
-                // same place if inPlace = true.
-                cTime += 0.04f;
-                 Vector3 startingPosition = transform.position;
-                Vector3 currentPos = Vector3.Lerp(startingPosition, targetPoint, cTime);
-                currentPos.y += trajectoryHeight * Mathf.Sin(Mathf.Clamp01(cTime) * Mathf.PI);
-                transform.position = currentPos;
+        if (startThrow)
+        {
 
-                if (transform.position == targetPoint)
-                {
-              //      move(targetPoint);
-                    startThrow = false;
-                    cTime = 0;
-                }
+            // Checks to make sure the anchor point that is it's target is unoccupied (including the anchor point that
+            // it launches from). The trajectory is calculated and the object moves to the new location (or stays in the
+            // same place if inPlace = true.
+            cTime += 0.04f;
+            Vector3 startingPosition = transform.position;
+            Vector3 currentPos = Vector3.Lerp(startingPosition, targetPoint, cTime);
+            currentPos.y += trajectoryHeight * Mathf.Sin(Mathf.Clamp01(cTime) * Mathf.PI);
+            transform.position = currentPos;
+
+            if (transform.position == targetPoint)
+            {
+                //      move(targetPoint);
+                startThrow = false;
+                cTime = 0;
             }
-           // if (targetPoint.GetComponent<AnchorPoint>().IsOccupied == true) return;
+        }
+        // if (targetPoint.GetComponent<AnchorPoint>().IsOccupied == true) return;
     }
 
     public void move(Vector3 dropLocation)
     {
         startingPoint.GetComponent<AnchorPoint>().IsOccupied = false;
- 
-            gameObject.layer = DEFAULT_LAYER;
-            gameObject.transform.position = dropLocation;
-            
+
+        gameObject.layer = DEFAULT_LAYER;
+        gameObject.transform.position = dropLocation;
+
     }
 
 
@@ -89,7 +88,7 @@ public class Jumper : IUsable
     {
         this.anchorPoint = anchorPoint;
         gameObject.layer = DEFAULT_LAYER;
-      //  Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
+        Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
         //gameObject.transform.localRotation = dropLocation.transform.localRotation;
         gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
         bucket bucket = dropLocation.GetComponent<bucket>();
