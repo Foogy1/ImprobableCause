@@ -58,6 +58,10 @@ public class IUsable : MonoBehaviour
             anchorPoint.IsOccupied = false;
             anchorPoint = null;
         }
+		if (gameObject.tag == "DominoCollision") {
+			this.gameObject.GetComponent<Topple> ().enabled = false;
+		}
+
 		try
 		{
 			gameObject.GetComponent<HitSound>().PlaySoundPickUp(gameObject);
@@ -78,6 +82,7 @@ public class IUsable : MonoBehaviour
 
         if (gameObject.tag == "DominoCollision")
         {
+			this.gameObject.GetComponent<Topple> ().enabled = true;
             this.anchorPoint = anchorPoint;
             gameObject.layer = DEFAULT_LAYER;
             Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
