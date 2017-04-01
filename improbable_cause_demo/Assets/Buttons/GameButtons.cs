@@ -19,6 +19,7 @@ public class GameButtons : MonoBehaviour
     private void Start()
     {
         iusables = FindObjectsOfType(typeof(IUsable)) as IUsable[];
+        pauseAllActions();
         button = GetComponent<Button>();
         switch (buttonType)
         {
@@ -44,6 +45,11 @@ public class GameButtons : MonoBehaviour
 
     public void pauseAllActions()
     {
+        foreach(IUsable usable in iusables)
+        {
+            usable.Restart();
+            usable.enabled = false;
+        }
         
     }
 
@@ -54,10 +60,6 @@ public class GameButtons : MonoBehaviour
 
     public void restart()
     {
-        Debug.Log("restart");
-      foreach(IUsable usable in iusables)
-        {
-            usable.Restart();
-        }  
+        pauseAllActions();
     }
 }

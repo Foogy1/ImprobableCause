@@ -11,9 +11,9 @@ public class IUsable : MonoBehaviour
     protected int IGNORE_RAYCAST_LAYER = 2;
     protected int DEFAULT_LAYER = 0;
     public string description = "";
-    public float offset;
-    private Vector3 startingPosition;
-    private Quaternion startingRotation;
+    //public float offset;
+    protected Vector3 startingPosition;
+    protected Quaternion startingRotation;
 
     [Tooltip("Object type label.")]
     public ObjectType objectType;
@@ -44,9 +44,9 @@ public class IUsable : MonoBehaviour
     }
 
 
-    public void Restart()
+    public virtual void Restart()
     {
-        // transform.position = startingPosition;
+        transform.position = startingPosition;
         transform.rotation = startingRotation;
     }
 
@@ -58,6 +58,14 @@ public class IUsable : MonoBehaviour
             anchorPoint.IsOccupied = false;
             anchorPoint = null;
         }
+		try
+		{
+			gameObject.GetComponent<HitSound>().PlaySoundPickUp(gameObject);
+		}
+		catch
+		{
+			Debug.LogError("You have not attached the HitSound Script to this object");
+		}
     }
 
     public virtual void place(GameObject dropLocation, AnchorPoint anchorPoint)
@@ -99,9 +107,5 @@ public class IUsable : MonoBehaviour
                 Debug.LogError("You have not attached the HitSound Script to this object");
             }
         }
-    }
-
-    public void restart()
-    {
     }
 }

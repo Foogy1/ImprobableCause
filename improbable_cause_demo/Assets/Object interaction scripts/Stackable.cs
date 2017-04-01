@@ -9,7 +9,10 @@ public class Stackable : IUsable
 
 
 	public override void Start(){
-		Vector3 currentCrateLocation = this.transform.position; //(this.transform.position.x,
+        base.Start();
+       // startingPosition = transform.position;
+       // startingRotation = transform.rotation;
+        Vector3 currentCrateLocation = this.transform.position; //(this.transform.position.x,
 		currentCrateLocation.y += offset;
 		currentSpawnedAnchorPoint = Instantiate(spawnableAnchorPointPrefab, currentCrateLocation, Quaternion.identity);
 		currentSpawnedAnchorPoint.transform.parent = gameObject.transform;
@@ -24,7 +27,7 @@ public class Stackable : IUsable
 	{
 		this.anchorPoint = anchorPoint;
 		gameObject.layer = DEFAULT_LAYER;
-		Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
+		//Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
 		//gameObject.transform.localRotation = dropLocation.transform.localRotation;
 		gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
 		Vector3 currentCrateLocation = this.transform.position; //(this.transform.position.x,
@@ -32,6 +35,14 @@ public class Stackable : IUsable
 		//currentCrateLocation.x += 0.5f;
 		currentSpawnedAnchorPoint = Instantiate(spawnableAnchorPointPrefab, currentCrateLocation, Quaternion.identity);
 		currentSpawnedAnchorPoint.transform.parent = gameObject.transform;
+		try
+		{
+			gameObject.GetComponent<HitSound>().PlaySound(gameObject);
+		}
+		catch
+		{
+			Debug.LogError("You have not attached the HitSound Script to this object");
+		}
 	}    
 
 	public override void pickUp()
@@ -49,6 +60,14 @@ public class Stackable : IUsable
 		} else if (anchorPoint) {
 			anchorPoint.IsOccupied = false;
 			anchorPoint = null;
+		}
+		try
+		{
+			gameObject.GetComponent<HitSound>().PlaySoundPickUp(gameObject);
+		}
+		catch
+		{
+			Debug.LogError("You have not attached the HitSound Script to this object");
 		}
 	}
 }
