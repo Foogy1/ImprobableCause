@@ -85,6 +85,7 @@
     <Compile Include="Assets\Buttons\GameButtons.cs" />
     <Compile Include="Assets\Camera Actions\CameraBehaviour.cs" />
     <Compile Include="Assets\Camera Actions\CameraController.cs" />
+    <Compile Include="Assets\CuckooClock.cs" />
     <Compile Include="Assets\Easy Outline\Behaviours\OutlineSystem.cs" />
     <Compile Include="Assets\FanBlade.cs" />
     <Compile Include="Assets\MainMenu\Scripts\QuitGame.cs" />

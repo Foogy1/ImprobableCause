@@ -72,7 +72,7 @@ public class Topple : MonoBehaviour {
       //  Debug.Log("BEFORE COLLISION");
         if (collision.gameObject.tag == "DominoCollision" || collision.gameObject.tag == "CuckooDoors") 
         {
-            Debug.Log("COLLISION!!!!");
+            //Debug.Log("COLLISION!!!!");
             // collision with other domino
             if (IsTriggered == false)
             {
