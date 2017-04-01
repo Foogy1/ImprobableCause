@@ -16,8 +16,10 @@ public class CameraController : MonoBehaviour {
     public GameObject outlineSystemObj;
     private OutlineSystem outlineSys;
     private int current = 1;
-	// Use this for initialization
-	void Start () {
+    private AudioSource Source;
+    public AudioClip ButtonSound;
+    // Use this for initialization
+    void Start () {
         outlineSys = outlineSystemObj.GetComponent<OutlineSystem>();
         mainCamera = GetComponentInChildren<Camera>();
         currCamera = mainCamera;
@@ -55,6 +57,7 @@ public class CameraController : MonoBehaviour {
         cameras[current].enabled = true;
         currCamera = cameras[current];
         outlineSys.mainCamera = currCamera;
+        PlayButtonSound(this.gameObject);
     }
 
     void MoveRight()
@@ -68,6 +71,22 @@ public class CameraController : MonoBehaviour {
         cameras[current].enabled = true;
         currCamera = cameras[current];
         outlineSys.mainCamera = currCamera;
+        PlayButtonSound(this.gameObject);
+
+    }
+
+    public void PlayButtonSound(GameObject Object)
+    {
+        Debug.Log("Play sound");
+        Source = Object.GetComponent<AudioSource>();
+        try
+        {
+            Source.PlayOneShot(ButtonSound, 1.0f);
+        }
+        catch
+        {
+            Debug.LogError("You have not attached the Audio Source to the Game Object");
+        }
 
     }
 }

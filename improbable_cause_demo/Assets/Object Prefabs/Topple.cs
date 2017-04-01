@@ -2,35 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Topple : MonoBehaviour {
+public class Topple : MonoBehaviour
+{
     public float TurningRate = 450.0f;
     public bool IsDown;
     private bool triggerinokripperino = false;
-	private bool soundOver = false;
     private Quaternion TargetRotation;
+    public HeldObject heldObject;
 
     public bool IsTriggered
     {
         get { return triggerinokripperino; }
     }
 
-    void Start () {
-     //   startingPosition = transform.position;
-     //   startingRotation = transform.rotation;
-        TargetRotation = this.transform.rotation; 
-	}
+    void Start()
+    {
+        heldObject = FindObjectOfType<HeldObject>();
+        TargetRotation = this.transform.rotation;
+    }
 
-	void Update () {
-        
-        if (TargetRotation != this.transform.rotation)
+    void Update()
+    {
+        if (heldObject.getHeldObject() != this.gameObject)
         {
-            this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, TargetRotation, TurningRate * Time.deltaTime);
-            triggerinokripperino = true;
-        }
-		if (triggerinokripperino && TargetRotation == this.transform.rotation && soundOver == false)
-        {
-            PlaySound();
-			soundOver = true;
+            if (TargetRotation != this.transform.rotation)
+            {
+                this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, TargetRotation, TurningRate * Time.deltaTime);
+                triggerinokripperino = true;
+            }
+            if (triggerinokripperino && TargetRotation == this.transform.rotation)
+            {
+                PlaySound();
+            }
         }
     }
 
@@ -39,8 +42,8 @@ public class Topple : MonoBehaviour {
         float forceAngle = Mathf.Atan2(force.x, force.y);
         float angle = forceAngle - transform.localRotation.z;
 
-       //// Debug.Log(forceAngle);
-       /// Debug.Log(angle);
+        Debug.Log(forceAngle);
+        Debug.Log(angle);
 
         if (angle < 180 * Mathf.Deg2Rad)
             angle = -90;
@@ -56,7 +59,7 @@ public class Topple : MonoBehaviour {
 
     private void PlaySound()
     {
-        this.gameObject.GetComponent<HitSound>().PlaySoundTopple(this.gameObject);
+        this.gameObject.GetComponent<HitSound>().PlaySound(this.gameObject);
         triggerinokripperino = false;
     }
 
@@ -69,10 +72,10 @@ public class Topple : MonoBehaviour {
     // code that gray wrote
     private void OnCollisionEnter(Collision collision)
     {
-      //  Debug.Log("BEFORE COLLISION");
-        if (collision.gameObject.tag == "DominoCollision" || collision.gameObject.tag == "CuckooDoors") 
+        Debug.Log("BEFORE COLLISION");
+        if (collision.gameObject.tag == "DominoCollision")
         {
-            //Debug.Log("COLLISION!!!!");
+            Debug.Log("COLLISION!!!!");
             // collision with other domino
             if (IsTriggered == false)
             {

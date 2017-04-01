@@ -25,6 +25,7 @@ public class Jumper : IUsable
 
     public override void Start()
     {
+        base.Start();
         objectType = ObjectType.Launcher;
 
         //targetPoint = null;
@@ -98,15 +99,14 @@ public class Jumper : IUsable
         gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
         bucket bucket = dropLocation.GetComponent<bucket>();
         startingPoint = dropLocation;
-		if (bucket)
-       {
+        if (bucket)
+        {
             Debug.Log("Place on bucket");
-          //  bucket.changeAngle();
-           targetPoint = transform.position;
-           targetPoint.z = transform.position.z + (distance * blockSize);
-			bucket.setProjectile (this.gameObject);
-           // startThrow = true;
-       }
+            bucket.changeAngle();
+            targetPoint = bucket.transform.forward;
+            targetPoint.z = bucket.transform.forward.z + (distance * blockSize);
+            startThrow = true;
+        }
         try
         {
             gameObject.GetComponent<HitSound>().PlaySound(gameObject);
@@ -117,10 +117,6 @@ public class Jumper : IUsable
         }
 
     }
-
-	public void startFire(){
-		startThrow = true;
-	}
 
     // Gets Euclidean distance between the current object's position and the target.
     private float getDistance(Vector3 other)

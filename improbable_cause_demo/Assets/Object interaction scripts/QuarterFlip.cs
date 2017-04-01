@@ -5,12 +5,14 @@ using UnityEditor.SceneManagement;
 
 public class QuarterFlip : MonoBehaviour {
 
-
-	private bool flipTime;
-	// Use this for initialization
-	void Start () {
+    public AudioClip Quarter;
+    private bool flipTime;
+    private AudioSource Source;
+    // Use this for initialization
+    void Start () {
 		flipTime = false;
-	}
+        Source = GetComponent<AudioSource>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,6 +31,22 @@ public class QuarterFlip : MonoBehaviour {
 		IUsable usable = collision.gameObject.GetComponent<IUsable>();
 		if (usable) {
 			flipTime = true;
+            PlayQuarterSound(this.gameObject);
 		}
 	}
+
+    public void PlayQuarterSound(GameObject Object)
+    {
+        Debug.Log("Play sound");
+        Source = Object.GetComponent<AudioSource>();
+        try
+        {
+            Source.PlayOneShot(Quarter, 1.0f);
+        }
+        catch
+        {
+            Debug.LogError("You have not attached the Audio Source to the Game Object");
+        }
+
+    }
 }
