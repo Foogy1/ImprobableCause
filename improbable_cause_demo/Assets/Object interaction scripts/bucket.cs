@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class bucket : AnchorPoint {
     public float offset = -25.0f;
-    public GameObject catapultBucket;
+	public GameObject projectile = null;
+	public bool hasJumper = false;
     public float timerDuration = 3.0f;
     private float timer = 0;
+	public GameObject catapultBucket;
     public float speed = 1;
     private bool startTimer = false;
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Jumper>() && IsOccupied != true)
+		if (projectile != null)
         {
-            if (fitsOnBucket(collision.gameObject))
-            {
-                grabObject(collision.gameObject);
-            }
+			projectile.GetComponent<Jumper> ().startFire ();
+			changeAngle ();
         }
     }
 
@@ -60,6 +60,9 @@ public class bucket : AnchorPoint {
         IsOccupied = true;
     }
 
+	public void setProjectile(GameObject go){
+		projectile = go;
+	}
    public void changeAngle()
     {
         transform.localEulerAngles = new Vector3(45.0f, 0, 0);
@@ -75,11 +78,9 @@ public class bucket : AnchorPoint {
         Jumper jumper = obj.GetComponent<Jumper>();
         if(jumper != null)
         {
-<<<<<<< HEAD
-           jumper.StartCatapult();
-=======
-            jumper.StartCatapult();
->>>>>>> 8234fd0ddba956e70806f52427f0b5344538fb6a
+			jumper.StartCatapult();
+          // jumper.StartCatapult();
+
             changeAngle();
         }
     }
