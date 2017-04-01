@@ -9,6 +9,7 @@ public class bucket : AnchorPoint {
     private float timer = 0;
     public float speed = 1;
     private bool startTimer = false;
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Jumper>() && IsOccupied != true)
@@ -41,12 +42,9 @@ public class bucket : AnchorPoint {
                 IsOccupied = false;
 
             }
-
         }
-
     }
-
-
+    
     bool fitsOnBucket(GameObject go)
     {
         return true;

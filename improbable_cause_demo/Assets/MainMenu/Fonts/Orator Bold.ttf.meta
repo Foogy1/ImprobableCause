@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 865b06664ef5d4a81ac641e381f42341
+timeCreated: 1490422967
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 300
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Orator
+  fontNames:
+  - Orator
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
