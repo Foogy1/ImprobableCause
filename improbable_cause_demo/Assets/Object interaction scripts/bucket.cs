@@ -75,7 +75,7 @@ public class bucket : AnchorPoint {
         Jumper jumper = obj.GetComponent<Jumper>();
         if(jumper != null)
         {
-           // jumper.StartCatapult();
+            jumper.StartCatapult();
             changeAngle();
         }
     }
