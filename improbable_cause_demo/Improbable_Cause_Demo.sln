@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "improbable_cause_demo.Plugins", "improbable_cause_demo.Plugins.csproj", "{EC6D92AC-20E7-695C-618C-6E9EFC3CF0D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "improbable_cause_demo", "improbable_cause_demo.csproj", "{71FEDC2B-7AE6-E93A-670B-899091D75C11}"
