@@ -111,6 +111,7 @@
     <Compile Include="Assets\Player Actions\SimpleRotate.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\LevelReset.cs" />
+    <Compile Include="Assets\StartGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Easy Outline\Outline.shader" />

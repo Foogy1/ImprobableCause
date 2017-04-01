@@ -5,6 +5,7 @@ public class GameButtons : MonoBehaviour
 {
     private Topple[] topples;
     private IUsable[] iusables;
+	private GameObject[] anchorPoints;
     private Button button;
     public BUTTONTYPE buttonType;
     private AudioSource Source;
@@ -29,6 +30,7 @@ public class GameButtons : MonoBehaviour
         clock = FindObjectOfType(typeof(CuckooClock)) as CuckooClock;
        // pauseAllActions();
         button = GetComponent<Button>();
+		anchorPoints = GameObject.FindGameObjectsWithTag ("AnchorPoint");
         switch (buttonType)
         {
             case BUTTONTYPE.Start:
@@ -76,6 +78,11 @@ public class GameButtons : MonoBehaviour
             top.restart();
         }
         PlayRestartSound(this.gameObject);
+		foreach(GameObject anchorP in anchorPoints)
+		{
+			anchorP.GetComponent<AnchorPoint> ().IsOccupied = false;
+			//   usable.enabled = false;
+		}
     }
 
     public void PlayStartSound(GameObject Object)
