@@ -103,8 +103,12 @@ public class Jumper : IUsable
         {
             Debug.Log("Place on bucket");
             bucket.changeAngle();
-            targetPoint = bucket.transform.forward;
-            targetPoint.z = bucket.transform.forward.z + (distance * blockSize);
+            targetPoint = bucket.transform.position + bucket.transform.forward * (distance * blockSize);
+            if(targetPoint.y < 2.2f)
+            {
+                targetPoint.y = 2.2f;
+            }
+            // targetPoint.z = bucket.transform.forward.z + (distance * blockSize);
             startThrow = true;
         }
         try

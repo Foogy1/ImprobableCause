@@ -7,6 +7,7 @@ public class GameButtons : MonoBehaviour
     private Button button;
     public BUTTONTYPE buttonType;
     private AudioSource Source;
+    private CuckooClock clock;
     public AudioClip StartSound;
     public AudioClip RestartSound;
 
@@ -23,6 +24,7 @@ public class GameButtons : MonoBehaviour
     private void Start()
     {
         iusables = FindObjectsOfType(typeof(IUsable)) as IUsable[];
+        clock = FindObjectOfType(typeof(CuckooClock)) as CuckooClock;
        // pauseAllActions();
         button = GetComponent<Button>();
         switch (buttonType)
@@ -49,23 +51,23 @@ public class GameButtons : MonoBehaviour
 
     public void pauseAllActions()
     {
-        foreach(IUsable usable in iusables)
-        {
-            usable.Restart();
-         //   usable.enabled = false;
-        }
         
     }
 
     public void startAllActions()
     {
-        // foreach
+        clock.OpenDoors();
         PlayStartSound(this.gameObject);
     }
 
     public void restart()
     {
-        pauseAllActions();
+       // pauseAllActions();
+        clock.CloseDoors();
+        foreach (IUsable usable in iusables)
+        {
+            usable.Restart();
+        }
         PlayRestartSound(this.gameObject);
     }
 

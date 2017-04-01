@@ -5,8 +5,9 @@ using UnityEngine;
 public class Topple : MonoBehaviour
 {
     public float TurningRate = 450.0f;
-    public bool IsDown;
+    public bool IsDown = false;
     private bool triggerinokripperino = false;
+    public bool fell = false;
     private Quaternion TargetRotation;
     public HeldObject heldObject;
 
@@ -21,18 +22,24 @@ public class Topple : MonoBehaviour
         TargetRotation = this.transform.rotation;
     }
 
+    public void SetTargetRotation(Quaternion rotation)
+    {
+        TargetRotation = rotation;
+    }
     void Update()
     {
         if (heldObject.getHeldObject() != this.gameObject)
         {
-            if (TargetRotation != this.transform.rotation)
+            if (TargetRotation != this.transform.localRotation)
             {
                 this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, TargetRotation, TurningRate * Time.deltaTime);
                 triggerinokripperino = true;
             }
-            if (triggerinokripperino && TargetRotation == this.transform.rotation)
+            if (triggerinokripperino && TargetRotation == this.transform.rotation && fell == false)
             {
+              //  if(IsDown == false) { 
                 PlaySound();
+            // }
             }
         }
     }
@@ -59,7 +66,9 @@ public class Topple : MonoBehaviour
 
     private void PlaySound()
     {
-        this.gameObject.GetComponent<HitSound>().PlaySound(this.gameObject);
+        fell = true;
+       
+        this.gameObject.GetComponent<HitSound>().PlaySoundTopple(this.gameObject);
         triggerinokripperino = false;
     }
 

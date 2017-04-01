@@ -9,6 +9,8 @@ public class FanBlade : MonoBehaviour {
         Vector3 directionalForce = new Vector3();
         directionalForce = collision.transform.position - transform.position;
         Vector2 orthoVect = new Vector2(directionalForce.x, directionalForce.z);
-      collision.gameObject.GetComponent<Rigidbody>().AddForce(directionalForce * magnitude);
+        if (collision.gameObject.GetComponent<Rigidbody>()) { 
+         collision.gameObject.GetComponent<Rigidbody>().AddForce(directionalForce * magnitude);
+          }
     }
 }

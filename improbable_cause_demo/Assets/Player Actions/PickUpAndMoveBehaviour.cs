@@ -29,17 +29,6 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && heldObject.getHeldObject() != null)
-        {
-            try
-            {
-                heldObject.getHeldObject().GetComponent<Topple>().SLERP(new Vector2(1, 1));
-            }
-            catch
-            {
-                Debug.LogError("You have not attached the Topple Script to the object");
-            }
-        }
         // Pick up object only if the player is not holding another object
         if (Input.GetMouseButtonDown(0) && heldObject.getHeldObject() == null)
         {
@@ -53,17 +42,26 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
         // Move held object
         else if (heldObject.getHeldObject())
         {
+            Topple topple = heldObject.getHeldObject().GetComponent<Topple>();
             moveHeldObject();
             if (Input.GetKeyDown(KeyCode.A))
             {
                 currentRot = this.gameObject.transform.localRotation;
-                Debug.Log(currentRot);
+               // Debug.Log(currentRot);
                 heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y + 45, currentRot.z, Space.World);
+                if (topple)
+                {
+                    topple.SetTargetRotation(gameObject.transform.localRotation);
+                }
+                
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
                 currentRot = this.gameObject.transform.rotation;
                 heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y - 45, currentRot.z, Space.World);
+                if (topple) { 
+                topple.SetTargetRotation(gameObject.transform.localRotation);
+                   }
             }
         }
         else
@@ -103,6 +101,10 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             }
             else if (usable)
             {
+                if(target.GetComponent<Topple>() != null)
+                {
+                    usable.ResetRotation();
+                }
                 heldObject.pickUpObject(target);
                 showAnchorPoints();
             }

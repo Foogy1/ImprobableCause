@@ -68,6 +68,11 @@ public class IUsable : MonoBehaviour
 		}
     }
 
+    public void ResetRotation()
+    {
+        transform.rotation = startingRotation;
+    }
+
     public virtual void place(GameObject dropLocation, AnchorPoint anchorPoint)
     {
 
