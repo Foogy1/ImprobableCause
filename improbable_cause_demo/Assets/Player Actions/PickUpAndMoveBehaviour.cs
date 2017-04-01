@@ -13,6 +13,7 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
     private Text description;
     private Text objectTypeText;
     private Image backgroundImage;
+    private Quaternion currentRot;
     private void Start()
     {
         // Gathers all the anchorPoint components (You do not want to use GetComponent
@@ -53,6 +54,17 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
         else if (heldObject.getHeldObject())
         {
             moveHeldObject();
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                currentRot = this.gameObject.transform.localRotation;
+                Debug.Log(currentRot);
+                heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y + 45, currentRot.z, Space.World);
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                currentRot = this.gameObject.transform.rotation;
+                heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y - 45, currentRot.z, Space.World);
+            }
         }
         else
         {
@@ -63,7 +75,7 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
     private void pickUpObject()
     {
         RaycastHit hit;
-     //   int layerMask = LayerMask.GetMask("AnchorPoint");
+        //   int layerMask = LayerMask.GetMask("AnchorPoint");
         // Shoot raycast based on mouse position.
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 10000))
@@ -73,7 +85,8 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             AnchorPoint anchorPoint = target.GetComponent<AnchorPoint>();
             Stackable stackable = target.GetComponent<Stackable>();
             // If the raycast hit an anchor point, check to make sure the anchor point is not occupied.
-            if (stackable) {
+            if (stackable)
+            {
                 if (stackable.getSpawnedAnchorPoint() != null)
                 {
                     if (stackable.getSpawnedAnchorPoint().GetComponent<AnchorPoint>().IsOccupied == true)
@@ -82,13 +95,13 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
                         return;
                     }
                 }
-              
-                   Debug.Log("picking up object");
-                   heldObject.pickUpObject(target);
-                   showAnchorPoints();
-                
+
+                Debug.Log("picking up object");
+                heldObject.pickUpObject(target);
+                showAnchorPoints();
+
             }
-           else if (usable)
+            else if (usable)
             {
                 heldObject.pickUpObject(target);
                 showAnchorPoints();
@@ -168,12 +181,12 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
     // highlights anchor points
     private void showAnchorPoints()
     {
-       
+
     }
 
     // hides all anchor points
     private void hideAnchorPoints()
     {
-       
+
     }
 }

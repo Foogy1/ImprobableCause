@@ -6,6 +6,10 @@ public class GameButtons : MonoBehaviour
     private IUsable[] iusables;
     private Button button;
     public BUTTONTYPE buttonType;
+    private AudioSource Source;
+    public AudioClip StartSound;
+    public AudioClip RestartSound;
+
 
     public enum BUTTONTYPE
     {
@@ -19,7 +23,7 @@ public class GameButtons : MonoBehaviour
     private void Start()
     {
         iusables = FindObjectsOfType(typeof(IUsable)) as IUsable[];
-        pauseAllActions();
+       // pauseAllActions();
         button = GetComponent<Button>();
         switch (buttonType)
         {
@@ -48,18 +52,52 @@ public class GameButtons : MonoBehaviour
         foreach(IUsable usable in iusables)
         {
             usable.Restart();
-            usable.enabled = false;
+         //   usable.enabled = false;
         }
         
     }
 
     public void startAllActions()
     {
-     // foreach
+        // foreach
+        PlayStartSound(this.gameObject);
     }
 
     public void restart()
     {
         pauseAllActions();
+        PlayRestartSound(this.gameObject);
     }
+
+    public void PlayStartSound(GameObject Object)
+    {
+        Debug.Log("Play sound");
+        Source = Object.GetComponent<AudioSource>();
+        try
+        {
+            Source.PlayOneShot(StartSound, 1.0f);
+        }
+        catch
+        {
+            Debug.LogError("You have not attached the Audio Source to the Game Object");
+        }
+
+    }
+
+    public void PlayRestartSound(GameObject Object)
+    {
+        Debug.Log("Play sound");
+        Source = Object.GetComponent<AudioSource>();
+        try
+        {
+            Source.PlayOneShot(RestartSound, 1.0f);
+        }
+        catch
+        {
+            Debug.LogError("You have not attached the Audio Source to the Game Object");
+        }
+
+    }
+
+
 }

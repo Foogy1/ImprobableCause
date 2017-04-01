@@ -52,9 +52,11 @@ public class Stackable : IUsable
 				return;
 			} else {
 				Destroy (currentSpawnedAnchorPoint);
-
-				anchorPoint.IsOccupied = false;
-				anchorPoint = null;
+                if (anchorPoint != null)
+                {
+                    anchorPoint.IsOccupied = false;
+                    anchorPoint = null;
+                }
 			}
 
 		} else if (anchorPoint) {

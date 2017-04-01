@@ -25,6 +25,7 @@ public class Jumper : IUsable
 
     public override void Start()
     {
+        base.Start();
         objectType = ObjectType.Launcher;
 
         //targetPoint = null;
@@ -102,8 +103,8 @@ public class Jumper : IUsable
         {
             Debug.Log("Place on bucket");
             bucket.changeAngle();
-            targetPoint = transform.position;
-            targetPoint.z = transform.position.z + (distance * blockSize);
+            targetPoint = bucket.transform.forward;
+            targetPoint.z = bucket.transform.forward.z + (distance * blockSize);
             startThrow = true;
         }
         try
