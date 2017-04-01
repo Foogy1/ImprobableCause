@@ -11,6 +11,10 @@ public class CuckooClock : MonoBehaviour {
 	void Start ()
     {
         colliders = GetComponentsInChildren<Collider>();
+        foreach(Collider coll in colliders)
+        {
+            coll.enabled = false;
+        }
         anim = GetComponent<Animator>();
         Invoke("OpenDoors", 1);
 	}

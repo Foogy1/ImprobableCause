@@ -7,8 +7,10 @@ public class Topple : MonoBehaviour
     public float TurningRate = 450.0f;
     public bool IsDown = false;
     private bool triggerinokripperino = false;
+    private bool isStartRotation = false;
     public bool fell = false;
     private Quaternion TargetRotation;
+    private Quaternion StartRotation;
     public HeldObject heldObject;
 
     public bool IsTriggered
@@ -16,30 +18,45 @@ public class Topple : MonoBehaviour
         get { return triggerinokripperino; }
     }
 
+    public void IsStartRotation(bool bo)
+    {
+        isStartRotation = bo;
+    }
+
     void Start()
     {
         heldObject = FindObjectOfType<HeldObject>();
         TargetRotation = this.transform.rotation;
+        StartRotation = transform.rotation;
+    }
+
+    public void restart()
+    {
+        TargetRotation = StartRotation;
     }
 
     public void SetTargetRotation(Quaternion rotation)
     {
         TargetRotation = rotation;
     }
+
     void Update()
     {
-        if (heldObject.getHeldObject() != this.gameObject)
+        if (isStartRotation)
         {
-            if (TargetRotation != this.transform.localRotation)
+            if (heldObject.getHeldObject() != this.gameObject)
             {
-                this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, TargetRotation, TurningRate * Time.deltaTime);
-                triggerinokripperino = true;
-            }
-            if (triggerinokripperino && TargetRotation == this.transform.rotation && fell == false)
-            {
-              //  if(IsDown == false) { 
-                PlaySound();
-            // }
+                if (TargetRotation != this.transform.localRotation)
+                {
+                    this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, TargetRotation, TurningRate * Time.deltaTime);
+                    triggerinokripperino = true;
+                }
+                if (triggerinokripperino && TargetRotation == this.transform.rotation && fell == false)
+                {
+                    //  if(IsDown == false) {
+                    PlaySound();
+                    // }
+                }
             }
         }
     }
@@ -67,7 +84,7 @@ public class Topple : MonoBehaviour
     private void PlaySound()
     {
         fell = true;
-       
+
         this.gameObject.GetComponent<HitSound>().PlaySoundTopple(this.gameObject);
         triggerinokripperino = false;
     }
@@ -84,10 +101,12 @@ public class Topple : MonoBehaviour
         Debug.Log("BEFORE COLLISION");
         if (collision.gameObject.tag == "DominoCollision")
         {
+            isStartRotation = true;
             Debug.Log("COLLISION!!!!");
             // collision with other domino
             if (IsTriggered == false)
             {
+                //triggerinokripperino = true;
                 // get the vector from this domino to the other
                 Vector3 directionalForce = new Vector3();
                 directionalForce = collision.transform.position - transform.position;

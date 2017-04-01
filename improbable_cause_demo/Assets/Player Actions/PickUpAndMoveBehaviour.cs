@@ -46,22 +46,31 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             moveHeldObject();
             if (Input.GetKeyDown(KeyCode.A))
             {
-                currentRot = this.gameObject.transform.localRotation;
-               // Debug.Log(currentRot);
-                heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y + 45, currentRot.z, Space.World);
+                currentRot = this.gameObject.transform.rotation;
                 if (topple)
                 {
-                    topple.SetTargetRotation(gameObject.transform.localRotation);
+                    Quaternion qt = new Quaternion(currentRot.x, currentRot.y, currentRot.z + 45, 0);
+                    heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y, currentRot.z + 45, Space.Self);
+                    topple.SetTargetRotation(qt);
                 }
-                
+                else
+                {
+                    heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y + 45, currentRot.z, Space.Self);
+                }
             }
-            if (Input.GetKeyDown(KeyCode.D))
+                if (Input.GetKeyDown(KeyCode.D))
             {
                 currentRot = this.gameObject.transform.rotation;
-                heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y - 45, currentRot.z, Space.World);
-                if (topple) { 
-                topple.SetTargetRotation(gameObject.transform.localRotation);
-                   }
+                if (topple)
+                {
+                    Quaternion qt = new Quaternion(currentRot.x, currentRot.y, currentRot.z - 45, 0);
+                    heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y, currentRot.z - 45, Space.Self);
+                    topple.SetTargetRotation(qt);
+                }
+                else
+                {
+                    heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y - 45, currentRot.z, Space.Self);
+                }
             }
         }
         else
@@ -103,7 +112,8 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             {
                 if(target.GetComponent<Topple>() != null)
                 {
-                    usable.ResetRotation();
+                    target.GetComponent<Topple>().IsStartRotation(false);
+                    target.GetComponent<Topple>().restart();
                 }
                 heldObject.pickUpObject(target);
                 showAnchorPoints();

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class GameButtons : MonoBehaviour
 {
+    private Topple[] topples;
     private IUsable[] iusables;
     private Button button;
     public BUTTONTYPE buttonType;
@@ -23,6 +24,7 @@ public class GameButtons : MonoBehaviour
 
     private void Start()
     {
+        topples = FindObjectsOfType(typeof(Topple)) as Topple[];
         iusables = FindObjectsOfType(typeof(IUsable)) as IUsable[];
         clock = FindObjectOfType(typeof(CuckooClock)) as CuckooClock;
        // pauseAllActions();
@@ -67,6 +69,11 @@ public class GameButtons : MonoBehaviour
         foreach (IUsable usable in iusables)
         {
             usable.Restart();
+        }
+
+        foreach(Topple top in topples)
+        {
+            top.restart();
         }
         PlayRestartSound(this.gameObject);
     }
