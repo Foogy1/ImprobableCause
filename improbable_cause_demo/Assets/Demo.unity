@@ -1172,7 +1172,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -41.8, y: -25}
-  m_SizeDelta: {x: 35, y: 35}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &84627389
 MonoBehaviour:
@@ -3451,10 +3451,10 @@ RectTransform:
   m_Father: {fileID: 1361369966}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -32.9, y: -278.85}
-  m_SizeDelta: {x: 35, y: 35}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -32.9, y: 15.149994}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &375981274
 MonoBehaviour:
@@ -4856,12 +4856,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9502b9ef70e728249898069cc61ff851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: FOUR! Wait wrong game?
-  objectType: 1
+  description: 
+  objectType: 0
   distance: 6
   blockSize: 2.5
   minDistance: 0.5
-  trajectoryHeight: 6
+  trajectoryHeight: 5
   inPlace: 0
 --- !u!114 &574614107
 MonoBehaviour:
@@ -6349,6 +6349,24 @@ GameObject:
   m_PrefabParentObject: {fileID: 1813766776629228, guid: 90a219aff53de1b468b7517c1635a7ef,
     type: 2}
   m_PrefabInternal: {fileID: 1836675980}
+--- !u!114 &777416557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 777416556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9502b9ef70e728249898069cc61ff851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  objectType: 0
+  distance: 6
+  blockSize: 2.5
+  minDistance: 0.5
+  trajectoryHeight: 5
+  inPlace: 0
 --- !u!114 &777416563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6682,8 +6700,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -89.4, y: -25}
-  m_SizeDelta: {x: 35, y: 35}
+  m_AnchoredPosition: {x: -114.8, y: -25}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &817539328
 MonoBehaviour:
@@ -7839,12 +7857,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9502b9ef70e728249898069cc61ff851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: FOUR! Wait wrong game?
-  objectType: 1
+  description: 
+  objectType: 0
   distance: 6
   blockSize: 2.5
   minDistance: 0.5
-  trajectoryHeight: 6
+  trajectoryHeight: 5
   inPlace: 0
 --- !u!114 &930874182
 MonoBehaviour:
@@ -8772,12 +8790,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9502b9ef70e728249898069cc61ff851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: FOUR! Wait wrong game?
-  objectType: 1
+  description: 
+  objectType: 0
   distance: 6
   blockSize: 2.5
   minDistance: 0.5
-  trajectoryHeight: 6
+  trajectoryHeight: 5
   inPlace: 0
 --- !u!114 &1052837583
 MonoBehaviour:
@@ -15509,7 +15527,8 @@ Prefab:
       propertyPath: trajectoryHeight
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114115085463673578, guid: 90a219aff53de1b468b7517c1635a7ef, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 90a219aff53de1b468b7517c1635a7ef, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1844168742
@@ -16328,10 +16347,10 @@ RectTransform:
   m_Father: {fileID: 1361369966}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -551, y: -278.85}
-  m_SizeDelta: {x: 35, y: 35}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 30, y: 15.149994}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2024980094
 MonoBehaviour:

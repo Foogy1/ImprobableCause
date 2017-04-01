@@ -64,7 +64,7 @@ public class bucket : AnchorPoint {
     {
         transform.localEulerAngles = new Vector3(45.0f, 0, 0);
         startTimer = true;
-       IsOccupied = true;
+        IsOccupied = true;
     }
 
 
@@ -75,7 +75,7 @@ public class bucket : AnchorPoint {
         Jumper jumper = obj.GetComponent<Jumper>();
         if(jumper != null)
         {
-           // jumper.StartCatapult();
+           jumper.StartCatapult();
             changeAngle();
         }
     }

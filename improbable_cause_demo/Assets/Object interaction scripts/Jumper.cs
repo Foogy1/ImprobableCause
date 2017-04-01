@@ -38,6 +38,11 @@ public class Jumper : IUsable
     }
     private void Update()
     {
+        Debug.Log("UD");
+        if(startThrow == true)
+        {
+            Debug.Log("TRUE");
+        }
         if (startThrow)
         {
 
@@ -95,6 +100,7 @@ public class Jumper : IUsable
         startingPoint = dropLocation;
         if (bucket)
         {
+            Debug.Log("Place on bucket");
             bucket.changeAngle();
             targetPoint = transform.position;
             targetPoint.z = transform.position.z + (distance * blockSize);
