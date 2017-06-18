@@ -40,7 +40,7 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             DropHeldObject();
         }
         // Move held object
-        else if (heldObject.getHeldObject())
+        else if (heldObject.getHeldObject() != null)
         {
             Topple topple = heldObject.getHeldObject().GetComponent<Topple>();
             moveHeldObject();
@@ -90,7 +90,7 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             GameObject target = hit.transform.gameObject;
             IUsable usable = target.GetComponent<IUsable>();
             AnchorPoint anchorPoint = target.GetComponent<AnchorPoint>();
-            Stackable stackable = target.GetComponent<Stackable>();
+            StackableComponent stackable = target.GetComponent<StackableComponent>();
             // If the raycast hit an anchor point, check to make sure the anchor point is not occupied.
             if (stackable)
             {
