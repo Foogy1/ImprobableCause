@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class IUsable : MonoBehaviour
+public class IUsable : Component
 {
     /* This script should go onto a usable object. It allows the player to pick up
      * and move the object by changing the objects layer from the default to the ignore
@@ -15,6 +15,7 @@ public class IUsable : MonoBehaviour
     protected Vector3 startingPosition;
     protected Quaternion startingRotation;
 
+
     [Tooltip("Object type label.")]
     public ObjectType objectType;
 
@@ -26,9 +27,9 @@ public class IUsable : MonoBehaviour
 
     public enum ObjectType
     {
+        Launcher,
         Stacker,
         Throwable,
-        Launcher,
         Domino
     }
 
@@ -37,8 +38,9 @@ public class IUsable : MonoBehaviour
         return objectType.ToString();
     }
 
-    public virtual void Start()
+    protected override void Start()
     {
+        base.Start(); 
         startingPosition = transform.position;
         startingRotation = transform.rotation;
     }
