@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class JumperComponent : IUsable
+public class JumperComponent : BaseObject
 {
-    /* Inherits from the IUsable class. This item will jump in place or between two anchor points.
+    /* Inherits from the BaseObject class. This item will jump in place or between two anchor points.
      The trajectory can be modified in the inspector.*/
      //I want to convert this into a JumperComponent component eventually
     private GameObject startingPoint;
@@ -24,7 +24,7 @@ public class JumperComponent : IUsable
     [Tooltip("If set to true, object will jump in place indefinitely.")]
     public bool inPlace = false;
 
-    protected override void Start()
+    public override void Start()
     {
         base.Start();
         objectType = ObjectType.Launcher;

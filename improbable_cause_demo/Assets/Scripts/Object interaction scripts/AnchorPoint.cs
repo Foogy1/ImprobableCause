@@ -2,7 +2,7 @@
 
 public class AnchorPoint : MonoBehaviour
 {
-    /* AnchorPoint class, IUsables will be placed on this object. The side of the object
+    /* AnchorPoint class, BaseObjects will be placed on this object. The side of the object
      * can be specified with the Side enum */
     [Tooltip("Default material")]
     public Material defaultMaterial;
@@ -20,7 +20,7 @@ public class AnchorPoint : MonoBehaviour
     private bool isOccupied = false;
     protected Renderer rend;
 
-    // This enum represents where an IUsable will be placed when it is dropped on
+    // This enum represents where an BaseObject will be placed when it is dropped on
     // an anchor point.
     public enum SIDE
     {

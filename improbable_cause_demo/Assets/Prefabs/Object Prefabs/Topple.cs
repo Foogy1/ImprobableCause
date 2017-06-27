@@ -91,8 +91,7 @@ public class Topple : MonoBehaviour
 
     private void SearchNearby()
     {
-        //Find Domino in topple rotation direction
-        //Topple that Domino
+
     }
 
     // code that gray wrote

@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class GameButtons : MonoBehaviour
 {
-    private Topple[] topples;
-    private IUsable[] iusables;
+    private BaseObject[] objects;
 	private GameObject[] anchorPoints;
     private Button button;
     public BUTTONTYPE buttonType;
@@ -16,7 +15,7 @@ public class GameButtons : MonoBehaviour
 
     public enum BUTTONTYPE
     {
-        Start,
+        Play,
         Pause,
         Restart,
         LeftCamera,
@@ -25,24 +24,23 @@ public class GameButtons : MonoBehaviour
 
     private void Start()
     {
-        topples = FindObjectsOfType(typeof(Topple)) as Topple[];
-        iusables = FindObjectsOfType(typeof(IUsable)) as IUsable[];
+        objects = FindObjectsOfType(typeof(BaseObject)) as BaseObject[];
         clock = FindObjectOfType(typeof(CuckooClock)) as CuckooClock;
        // pauseAllActions();
         button = GetComponent<Button>();
 		anchorPoints = GameObject.FindGameObjectsWithTag ("AnchorPoint");
         switch (buttonType)
         {
-            case BUTTONTYPE.Start:
-                button.onClick.AddListener(() => startAllActions());
+            case BUTTONTYPE.Play:
+                button.onClick.AddListener(() => Play());
                 break;
 
             case BUTTONTYPE.Pause:
-                button.onClick.AddListener(() => pauseAllActions());
+                button.onClick.AddListener(() => Pause());
                 break;
 
             case BUTTONTYPE.Restart:
-                button.onClick.AddListener(() => restart());
+                button.onClick.AddListener(() => Restart());
                 break;
             case BUTTONTYPE.LeftCamera:
                 break;
@@ -52,31 +50,34 @@ public class GameButtons : MonoBehaviour
         }
     }
 
-
-    public void pauseAllActions()
-    {
-        
-    }
-
-    public void startAllActions()
+    public void Play()
     {
         clock.OpenDoors();
         PlayStartSound(this.gameObject);
+
+        foreach (BaseObject baseobject in objects)
+        {
+            baseobject.Play();
+        }
     }
 
-    public void restart()
+    public void Pause()
+    {
+        foreach (BaseObject baseobject in objects)
+        {
+            baseobject.Pause();
+        }
+    }
+
+    public void Restart()
     {
        // pauseAllActions();
         clock.CloseDoors();
-        foreach (IUsable usable in iusables)
+        foreach (BaseObject baseobject in objects)
         {
-            usable.Restart();
+            baseobject.Restart();
         }
 
-        foreach(Topple top in topples)
-        {
-            top.restart();
-        }
         PlayRestartSound(this.gameObject);
 		foreach(GameObject anchorP in anchorPoints)
 		{

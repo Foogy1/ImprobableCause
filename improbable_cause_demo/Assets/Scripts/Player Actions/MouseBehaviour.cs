@@ -34,7 +34,7 @@ public class MouseBehaviour : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 10000))
             {
                 GameObject target = hit.transform.gameObject;
-                IUsable usable = target.GetComponent<IUsable>();
+                BaseObject usable = target.GetComponent<BaseObject>();
                 AnchorPoint anchorPoint = target.GetComponent<AnchorPoint>();
                 // If the raycast hit an anchor point, check to make sure the anchor point is not occupied.
                 if (anchorPoint)
@@ -90,7 +90,7 @@ public class MouseBehaviour : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 10000))
             {
                 GameObject target = hit.transform.gameObject;
-                IUsable usable = target.GetComponent<IUsable>();
+                BaseObject usable = target.GetComponent<BaseObject>();
                 if (usable)
                 {
                     objectTypeText.text = usable.getObjectType().ToString();

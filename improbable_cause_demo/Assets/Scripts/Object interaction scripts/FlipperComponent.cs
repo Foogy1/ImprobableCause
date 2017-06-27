@@ -37,7 +37,7 @@ public class Flipper : Component
 	private void OnCollisionEnter(Collision collision)
 	{
         Debug.Log("COINFLIPP");
-		IUsable usable = collision.gameObject.GetComponent<IUsable>();
+		BaseObject usable = collision.gameObject.GetComponent<BaseObject>();
 		if (usable) {
 			flipTime = true;
             PlayQuarterSound(this.gameObject);

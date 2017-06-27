@@ -26,12 +26,12 @@ public class HeldObject : MonoBehaviour
     public void pickUpObject(GameObject gameObject)
     {
         heldObject = gameObject;
-        heldObject.GetComponent<IUsable>().pickUp();
+        heldObject.GetComponent<BaseObject>().pickUp();
     }
 
     public void placeObject(GameObject dropLocation)
     {
-        IUsable usable = heldObject.GetComponent<IUsable>();
+        BaseObject usable = heldObject.GetComponent<BaseObject>();
         AnchorPoint anchorPoint = dropLocation.GetComponent<AnchorPoint>();
         usable.place(dropLocation, anchorPoint);
         anchorPoint.setObject();

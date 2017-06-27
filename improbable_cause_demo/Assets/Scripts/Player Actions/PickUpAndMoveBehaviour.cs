@@ -42,12 +42,18 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
         // Move held object
         else if (heldObject.getHeldObject() != null)
         {
-            Topple topple = heldObject.getHeldObject().GetComponent<Topple>();
+            //ToppleComponent topple = heldObject.getHeldObject().GetComponent<ToppleComponent>();
             moveHeldObject();
+
+
+            heldObject.getHeldObject().GetComponent<BaseObject>().isHeld = true;
+
+
+            /* rotations done in RotateObjects attatched to each object instead
             if (Input.GetKeyDown(KeyCode.A))
             {
                 currentRot = this.gameObject.transform.rotation;
-                if (topple)
+                /*if (topple)
                 {
                     Quaternion qt = new Quaternion(currentRot.x, currentRot.y, currentRot.z + 45, 0);
                     heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y, currentRot.z + 45, Space.Self);
@@ -61,7 +67,7 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.D))
             {
                 currentRot = this.gameObject.transform.rotation;
-                if (topple)
+                /*if (topple)
                 {
                     Quaternion qt = new Quaternion(currentRot.x, currentRot.y, currentRot.z - 45, 0);
                     heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y, currentRot.z - 45, Space.Self);
@@ -71,7 +77,7 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
                 {
                     heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y - 45, currentRot.z, Space.Self);
                 }
-            }
+            }*/
         }
         else
         {
@@ -88,7 +94,7 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 10000))
         {
             GameObject target = hit.transform.gameObject;
-            IUsable usable = target.GetComponent<IUsable>();
+            BaseObject usable = target.GetComponent<BaseObject>();
             AnchorPoint anchorPoint = target.GetComponent<AnchorPoint>();
             StackableComponent stackable = target.GetComponent<StackableComponent>();
             // If the raycast hit an anchor point, check to make sure the anchor point is not occupied.
@@ -110,18 +116,16 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             }
             else if (usable)
             {
-                if(target.GetComponent<Topple>() != null)
+                /*if(target.GetComponent<ToppleComponent>() != null)
                 {
-                    target.GetComponent<Topple>().IsStartRotation(false);
-                    target.GetComponent<Topple>().restart();
-                }
+                    target.GetComponent<ToppleComponent>().IsStartRotation(false);
+                    target.GetComponent<ToppleComponent>().Restart();
+                }*/
                 heldObject.pickUpObject(target);
                 showAnchorPoints();
             }
         }
     }
-
-    void pickup() { }
 
     private void DropHeldObject()
     {
@@ -135,6 +139,8 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
             {
                 if (anchorPoint.IsOccupied == false && anchorPoint.canObjectBePlacedHere(heldObject.getHeldObject()))
                 {
+                    heldObject.getHeldObject().GetComponent<BaseObject>().isHeld = false;
+
                     heldObject.placeObject(target);
                     hideAnchorPoints();
                 }
@@ -174,7 +180,7 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             GameObject target = hit.transform.gameObject;
-            IUsable usable = target.GetComponent<IUsable>();
+            BaseObject usable = target.GetComponent<BaseObject>();
             if (usable)
             {
                 description.text = usable.GetDescription();

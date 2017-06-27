@@ -4,8 +4,9 @@ using UnityEngine;
 
 public abstract class Component : MonoBehaviour
 {
+    protected string ComponentDescription = "";
 
-	protected virtual void Start ()
+    protected virtual void Start ()
 	{
 		
 	}
@@ -14,4 +15,6 @@ public abstract class Component : MonoBehaviour
 	{
 		
 	}
+
+
 }

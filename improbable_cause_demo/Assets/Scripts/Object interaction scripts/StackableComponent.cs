@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StackableComponent : IUsable
+public class StackableComponent : BaseObject
 {    
 
 	public GameObject spawnableAnchorPointPrefab;
@@ -8,7 +8,7 @@ public class StackableComponent : IUsable
 	public float offset = 1f;    
 
 
-	protected override void Start(){
+	public override void Start(){
         base.Start();
        // startingPosition = transform.position;
        // startingRotation = transform.rotation;
