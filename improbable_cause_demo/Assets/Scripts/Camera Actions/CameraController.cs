@@ -6,71 +6,58 @@ using UnityEngine.UI;
 public class CameraController : MonoBehaviour {
     public Button leftButton;
     public Button rightButton;
-   private  Camera mainCamera;
-    public GameObject left;
-    public GameObject right;
-    private Camera leftCamera;
-    private Camera rightCamera;
-    private Camera[] cameras;
-    private Camera currCamera;
-    public GameObject outlineSystemObj;
-    private OutlineSystem outlineSys;
-    private int current = 1;
-    private AudioSource Source;
+    public GameObject mainCamera;
+    public Vector3 centerPosition = new Vector3(0, 0, 0);
     public AudioClip ButtonSound;
-    // Use this for initialization
-    void Start () {
-        outlineSys = outlineSystemObj.GetComponent<OutlineSystem>();
-        mainCamera = GetComponentInChildren<Camera>();
-        currCamera = mainCamera;
-        leftCamera = left.GetComponent<Camera>();
-        leftCamera.enabled = false;
-        rightCamera = right.GetComponent<Camera>();
-        rightCamera.enabled = false;
-        cameras = new Camera[] { leftCamera, mainCamera, rightCamera };
 
+    OutlineSystem outlineSys;
+    int index = 1;
+    AudioSource Source;
+
+
+    void Start ()
+    {
         leftButton.onClick.AddListener(() => MoveLeft());
         rightButton.onClick.AddListener(() => MoveRight());
     }
 	
 	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Q)){
+	void Update ()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
             MoveLeft();
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
             MoveRight();
         }
-
     }
 
 
     void MoveLeft()
     {
-        current--;
-        if (current < 0)
+        index--;
+        if (index < 0)
         {
-            current = 0;
+            index = 0;
         }
-        currCamera.enabled = false;
-        cameras[current].enabled = true;
-        currCamera = cameras[current];
-        outlineSys.mainCamera = currCamera;
+        else
+            mainCamera.transform.RotateAround(centerPosition, Vector3.up, 33f);
+
         PlayButtonSound(this.gameObject);
     }
 
     void MoveRight()
     {
-        current++;
-        if (current > 2)
+        index++;
+        if (index > 2)
         {
-            current = 2;
+            index = 2;
         }
-        currCamera.enabled = false;
-        cameras[current].enabled = true;
-        currCamera = cameras[current];
-        outlineSys.mainCamera = currCamera;
+        else
+            mainCamera.transform.RotateAround(centerPosition, Vector3.up, -33f);
+
         PlayButtonSound(this.gameObject);
 
     }

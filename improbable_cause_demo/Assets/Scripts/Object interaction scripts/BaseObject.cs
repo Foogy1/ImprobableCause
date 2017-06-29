@@ -27,6 +27,7 @@ public class BaseObject : MonoBehaviour
 
 
 
+
     [Tooltip("Object type label.")]
     public ObjectType objectType;
 
@@ -82,7 +83,16 @@ public class BaseObject : MonoBehaviour
     public virtual void Play()
     {
         if (!isKinematic)
+        {
             GetComponent<Rigidbody>().isKinematic = false;
+            foreach (Transform child in transform)
+            {
+                if (child.GetComponent<Rigidbody>())
+                {
+                    child.GetComponent<Rigidbody>().isKinematic = false;
+                }
+            }
+        }
     }
 
     public virtual void Pause()
@@ -95,6 +105,18 @@ public class BaseObject : MonoBehaviour
         transform.position = startingPosition;
         transform.rotation = startingRotation;
         GetComponent<Rigidbody>().isKinematic = true;
+
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<Rigidbody>())
+            {
+                child.GetComponent<Rigidbody>().isKinematic = true;
+            }
+            if (child.GetComponent<StabberComponent>())
+            {
+                child.GetComponent<StabberComponent>().Restart();
+            }
+        }
     }
 
     public virtual void pickUp()
@@ -124,7 +146,7 @@ public class BaseObject : MonoBehaviour
     public virtual void place(GameObject dropLocation, AnchorPoint anchorPoint)
     {
 
-        if (gameObject.tag == "DominoCollision")
+        /*if (gameObject.tag == "DominoCollision")
         {
             this.anchorPoint = anchorPoint;
             gameObject.layer = DEFAULT_LAYER;
@@ -143,7 +165,7 @@ public class BaseObject : MonoBehaviour
             }
         }
 
-        else
+        else*/
         {
 
             this.anchorPoint = anchorPoint;

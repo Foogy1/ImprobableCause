@@ -8,8 +8,8 @@ public class ToppleComponent : Component
     {
         base.Start();
 
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX;
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ;
+        //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ
+           // | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionX;
     }
 
 
