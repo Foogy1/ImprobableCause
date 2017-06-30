@@ -24,9 +24,7 @@ public class BaseObject : MonoBehaviour
     protected int DEFAULT_LAYER = 0;
     protected Vector3 startingPosition;
     protected Quaternion startingRotation;
-
-
-
+    private bool isRaycasting = false;
 
     [Tooltip("Object type label.")]
     public ObjectType objectType;
@@ -51,7 +49,7 @@ public class BaseObject : MonoBehaviour
     }
 
     public virtual void Start()
-    { 
+    {
         startingPosition = transform.position;
         startingRotation = transform.rotation;
         GetComponent<Rigidbody>().isKinematic = true;
@@ -59,7 +57,7 @@ public class BaseObject : MonoBehaviour
 
     public void Update()
     {
-        if(isHeld)
+        if (isHeld)
         {
             if (Input.GetKeyDown(xPositive))
             {
@@ -128,14 +126,14 @@ public class BaseObject : MonoBehaviour
             anchorPoint = null;
         }
 
-		try
-		{
-			gameObject.GetComponent<HitSound>().PlaySoundPickUp(gameObject);
-		}
-		catch
-		{
-			Debug.LogError("You have not attached the HitSound Script to this object");
-		}
+        try
+        {
+            gameObject.GetComponent<HitSound>().PlaySoundPickUp(gameObject);
+        }
+        catch
+        {
+            Debug.LogError("You have not attached the HitSound Script to this object");
+        }
     }
 
     public void ResetRotation()
@@ -143,44 +141,28 @@ public class BaseObject : MonoBehaviour
         transform.rotation = startingRotation;
     }
 
+    public void startRaycast()
+    {
+        isRaycasting = true;
+    }
+
+    public void stopRaycast()
+    {
+        isRaycasting = false;
+    }
+
     public virtual void place(GameObject dropLocation, AnchorPoint anchorPoint)
     {
-
-        /*if (gameObject.tag == "DominoCollision")
+        this.anchorPoint = anchorPoint;
+        gameObject.layer = DEFAULT_LAYER;
+        gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
+        try
         {
-            this.anchorPoint = anchorPoint;
-            gameObject.layer = DEFAULT_LAYER;
-            Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
-            //gameObject.transform.localRotation = dropLocation.transform.localRotation;
-            gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1.0f, gameObject.transform.position.z);
-            //gameObject.transform.position.y += offset;
-            try
-            {
-                gameObject.GetComponent<HitSound>().PlaySound(gameObject);
-            }
-            catch
-            {
-                Debug.LogError("You have not attached the HitSound Script to this object");
-            }
+            gameObject.GetComponent<HitSound>().PlaySound(gameObject);
         }
-
-        else*/
+        catch
         {
-
-            this.anchorPoint = anchorPoint;
-            gameObject.layer = DEFAULT_LAYER;
-            Debug.Log(dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y));
-            //gameObject.transform.localRotation = dropLocation.transform.localRotation;
-            gameObject.transform.position = dropLocation.GetComponent<AnchorPoint>().GetPosition(GetComponent<Renderer>().bounds.size.y);
-            try
-            {
-                gameObject.GetComponent<HitSound>().PlaySound(gameObject);
-            }
-            catch
-            {
-                Debug.LogError("You have not attached the HitSound Script to this object");
-            }
+            Debug.LogError("You have not attached the HitSound Script to this object");
         }
     }
 }

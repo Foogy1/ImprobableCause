@@ -14,6 +14,8 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
     private Text objectTypeText;
     private Image backgroundImage;
     private Quaternion currentRot;
+    private AnchorPoint anchorPoint;
+
     private void Start()
     {
         // Gathers all the anchorPoint components (You do not want to use GetComponent
@@ -42,42 +44,8 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
         // Move held object
         else if (heldObject.getHeldObject() != null)
         {
-            //ToppleComponent topple = heldObject.getHeldObject().GetComponent<ToppleComponent>();
             moveHeldObject();
-
-
             heldObject.getHeldObject().GetComponent<BaseObject>().isHeld = true;
-
-
-            /* rotations done in RotateObjects attatched to each object instead
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                currentRot = this.gameObject.transform.rotation;
-                /*if (topple)
-                {
-                    Quaternion qt = new Quaternion(currentRot.x, currentRot.y, currentRot.z + 45, 0);
-                    heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y, currentRot.z + 45, Space.Self);
-                    topple.SetTargetRotation(qt);
-                }
-                else
-                {
-                    heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y + 45, currentRot.z, Space.Self);
-                }
-            }
-                if (Input.GetKeyDown(KeyCode.D))
-            {
-                currentRot = this.gameObject.transform.rotation;
-                /*if (topple)
-                {
-                    Quaternion qt = new Quaternion(currentRot.x, currentRot.y, currentRot.z - 45, 0);
-                    heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y, currentRot.z - 45, Space.Self);
-                    topple.SetTargetRotation(qt);
-                }
-                else
-                {
-                    heldObject.getHeldObject().transform.Rotate(currentRot.x, currentRot.y - 45, currentRot.z, Space.Self);
-                }
-            }*/
         }
         else
         {
@@ -88,7 +56,6 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
     private void pickUpObject()
     {
         RaycastHit hit;
-        //   int layerMask = LayerMask.GetMask("AnchorPoint");
         // Shoot raycast based on mouse position.
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 10000))
@@ -104,25 +71,14 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
                 {
                     if (stackable.getSpawnedAnchorPoint().GetComponent<AnchorPoint>().IsOccupied == true)
                     {
-                        Debug.Log("IsOCcupied");
                         return;
                     }
                 }
-
-                Debug.Log("picking up object");
                 heldObject.pickUpObject(target);
-                showAnchorPoints();
-
             }
             else if (usable)
             {
-                /*if(target.GetComponent<ToppleComponent>() != null)
-                {
-                    target.GetComponent<ToppleComponent>().IsStartRotation(false);
-                    target.GetComponent<ToppleComponent>().Restart();
-                }*/
                 heldObject.pickUpObject(target);
-                showAnchorPoints();
             }
         }
     }
@@ -134,15 +90,14 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 10000))
         {
             GameObject target = hit.transform.gameObject;
-            AnchorPoint anchorPoint = target.GetComponent<AnchorPoint>();
-            if (anchorPoint)
+            AnchorPoint CurrAnchorPoint = target.GetComponent<AnchorPoint>();
+            if (CurrAnchorPoint)
             {
-                if (anchorPoint.IsOccupied == false && anchorPoint.canObjectBePlacedHere(heldObject.getHeldObject()))
+                if (CurrAnchorPoint.IsOccupied == false && CurrAnchorPoint.canObjectBePlacedHere(heldObject.getHeldObject()))
                 {
                     heldObject.getHeldObject().GetComponent<BaseObject>().isHeld = false;
 
                     heldObject.placeObject(target);
-                    hideAnchorPoints();
                 }
             }
         }
@@ -150,24 +105,28 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
 
     private void moveHeldObject()
     {
-        showAnchorPoints();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
         {
             GameObject target = hit.transform.gameObject;
-            AnchorPoint anchorPoint = target.GetComponent<AnchorPoint>();
+            AnchorPoint CurrAnchorPoint = target.GetComponent<AnchorPoint>();
             if (anchorPoint)
             {
-                if (anchorPoint.canObjectBePlacedHere(heldObject.getHeldObject()))
+                //  anchorPoint.showDefaultMaterial();
+            }
+            if (CurrAnchorPoint)
+            {
+                if (CurrAnchorPoint.canObjectBePlacedHere(heldObject.getHeldObject()))
                 {
-                    anchorPoint.showCanBePlaced();
+                    //     CurrAnchorPoint.showCanBePlaced();
                 }
                 else
                 {
-                    anchorPoint.showCannotBePlaced();
+                    ///  CurrAnchorPoint.showCannotBePlaced();
                 }
+                anchorPoint = CurrAnchorPoint;
             }
             heldObject.moveObject(hit.point);
         }
@@ -194,17 +153,5 @@ public class PickUpAndMoveBehaviour : MonoBehaviour
                 backgroundImage.enabled = false;
             }
         }
-    }
-
-    // highlights anchor points
-    private void showAnchorPoints()
-    {
-
-    }
-
-    // hides all anchor points
-    private void hideAnchorPoints()
-    {
-
     }
 }

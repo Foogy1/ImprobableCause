@@ -4,6 +4,7 @@ public class AnchorPoint : MonoBehaviour
 {
     /* AnchorPoint class, BaseObjects will be placed on this object. The side of the object
      * can be specified with the Side enum */
+
     [Tooltip("Default material")]
     public Material defaultMaterial;
 
@@ -15,6 +16,7 @@ public class AnchorPoint : MonoBehaviour
 
     [Tooltip("Specifies where an object will be placed")]
     public SIDE side;
+
     public bool isPropeller = false;
     public bool isOnFulcram = false;
     private bool isOccupied = false;
@@ -30,7 +32,6 @@ public class AnchorPoint : MonoBehaviour
         BOTTOM,
     }
 
- 
     // Places object based on position and size.
     virtual public Vector3 GetPosition(float objectSize)
     {
@@ -76,12 +77,17 @@ public class AnchorPoint : MonoBehaviour
 
     public void showCanBePlaced()
     {
-       // rend.material = canPlaceMaterial;
+        rend.material = canPlaceMaterial;
     }
 
     public void showCannotBePlaced()
     {
-       // rend.material = cannotPlaceMaterial;
+        rend.material = cannotPlaceMaterial;
+    }
+
+    public void showDefaultMaterial()
+    {
+        rend.material = defaultMaterial;
     }
 
     public bool canObjectBePlacedHere(GameObject go)
